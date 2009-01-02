@@ -1,0 +1,30 @@
+<div class="grid_8" id = "reg">
+  <div id="sos"></div>
+  <div id="top_r"></div>
+  <div id="side_r">
+    <b>To register, enter your ward&#39;s ID number and received verification code.</b>
+    <br/><br/>
+    <div id ="error"><%= flash[:error] %></div>
+    <% form_tag :controller => 'followers',:action => 'create' do %>
+      <label id="fst">Enter your ward's ID number:</label> <%=  text_field_tag :idno, nil,:size => 30%>
+      <label id="fst">Enter you ward's verificaion code:</label> <%= text_field_tag :vcode, nil,:size => 30 %>
+      <br/>
+      <%= if logged_in?
+        submit_tag "Follow"
+      else
+        submit_tag "Next"
+      end%>
+    <% end %>
+
+
+  </div>
+  <div id="bot_r"></div>
+</div>
+
+<div class="grid_4" id ="tehside_r">
+  <div id="par"><p>The Online Access Student Information System is a web-based application that enables parents/guardians to view school information which pertains to their student/child . 	</p></div>
+  <div id="pic_r"></div>
+
+</div>
+
+

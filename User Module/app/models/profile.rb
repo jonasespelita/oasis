@@ -1,5 +1,9 @@
 class Profile < ActiveResource::Base
-  self.site = "http://localhost:3000/"
+
+
+
+  self.timeout = 5
+
   def to_param
     idNo
   end

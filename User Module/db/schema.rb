@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20081231054533) do
+ActiveRecord::Schema.define(:version => 20090102074130) do
 
   create_table "followers", :force => true do |t|
     t.integer  "idno"
@@ -39,6 +39,8 @@ ActiveRecord::Schema.define(:version => 20081231054533) do
     t.datetime "updated_at"
     t.string   "remember_token"
     t.datetime "remember_token_expires_at"
+    t.datetime "last_login"
+    t.datetime "cur_login"
   end
 
 end

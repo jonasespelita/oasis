@@ -13,8 +13,7 @@
     <%= stylesheet_link_tag "960" %>
     <%= stylesheet_link_tag "calendar" %>
     <%= stylesheet_link_tag "style" %>
-    <%= javascript_include_tag "jquery.js", "jquery.accordion.js", "jquery.localscroll.js","jquery.scrollTo.js", "test.js" ,:defaults%>
-
+    <%= javascript_include_tag "jquery.js", "jquery.accordion.js", "jquery.localscroll.js","jquery.scrollTo.js", "test.js" %>
   </head>
   <body>
 
@@ -52,7 +51,7 @@
 
           <!--start-->
           <% for prof in @profiles %>
-            <%=render :partial => "ward", :locals => { :profile => prof }  %>
+            <%=render :partial => "profile", :locals => { :profile => prof }  %>
           <% end %>
           <!--end-->
 
@@ -60,7 +59,6 @@
 
 
       </div>
-      
       <div class = "grid_12" id = "footer">
         <div id="f_links">
           <a href ="index.html">Home  </a>  :  <a href ="tos.html">Terms &amp; Conditions </a> :   <a href ="pri.html">Privacy Policy </a>  <br/> <a href ="cont.html"> Contact Us</a> :  <a href ="about.html"> About OASIS</a> : <a href="sitemap.html"> Site Map</a><br/>
@@ -71,31 +69,6 @@
         </div>
 
       </div>
-     
     </div>
-    <div id="bot_notifs" style="display:none;" >
-      <div id="bot_title"><span style="margin-right:190px">Notifications </span><%= link_to_function('x',
-           "Element.hide('bot_notifs');
-            ") %></div>
-
-    <ul>
-      <li>Notification 1</li>
-      <li>Notification 1</li>
-      <li>Notification 1</li>
-      <li>Notification 1</li>
-      <li>Notification 1</li>
-      <li>Notification 1</li>
-      <li>Notification 1</li>
-      <li>Notification 1</li>
-      
-    </ul>
-    <div id ="bot_linkie"><a href="#">See All</a></div>
-    </div>
-     <div id="bot_menu"><div id="bot_menu_thing">
-         <%=  link_to_function('Show Notifications (10)',
-           "Element.show('bot_notifs');
-            ")%>
-
-       </div></div>
   </body>
 </html>

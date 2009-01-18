@@ -7,6 +7,15 @@ class SessionsController < ApplicationController
   
 
   def new
+    @IE = case (request.env['HTTP_USER_AGENT']).index('.NET')
+    when nil then
+      
+      false
+    else
+      access_denied
+      true
+    end
+    
     if logged_in?
       redirect_to wards_path
     end
@@ -19,7 +28,10 @@ class SessionsController < ApplicationController
         current_user.remember_me unless current_user.remember_token?
         cookies[:auth_token] = { :value => self.current_user.remember_token , :expires => self.current_user.remember_token_expires_at }
       end
+      current_user.last_login = current_user.cur_login
+      current_user.cur_login = Time.now
       
+      current_user.save
       redirect_to wards_path
       flash[:notice] = "Logged in as #{current_user.login}"
     else
@@ -31,7 +43,7 @@ class SessionsController < ApplicationController
     self.current_user.forget_me if logged_in?
     cookies.delete :auth_token
     reset_session
-    flash[:notice] = "You have been logged out."
+    flash[:notice] = "You have logged out."
     #redirect_to new_session_path
     redirect_to root_path
   end

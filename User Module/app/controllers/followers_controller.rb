@@ -2,6 +2,8 @@ class FollowersController < ApplicationController
   layout 'reg'
 
   def new
+    
+    
     #store location so that we can go back if something fails
     store_location
   end
@@ -21,8 +23,8 @@ class FollowersController < ApplicationController
     end
 
     #need hash formula for vcode verification here!
-    if idno != vcode
-      flash[:error]="Invalid Verification Code"
+    if  vcode != hash(idno)[4..9]
+      flash[:error]="Invalid Verification Code #{hash(idno)[4..9]}"
       return false
     end
 
@@ -30,16 +32,20 @@ class FollowersController < ApplicationController
     return true
   end
 
-
+  def hash(i)
+     Digest::SHA1.hexdigest("#{@key}#{i}")
+  end
+  
   def create
+
     if !verify?(params[:idno], params[:vcode])
       redirect_back_or_default('/')
       return
     end
-#init student for easy reference
+    #init student for easy reference
     stud = Profile.find(params[:idno])
 
-#adding new ward if logged in
+    #adding new ward if logged in
     if logged_in?
       # check if user has already added the ward
       followers = Follower.find_all_by_user_id current_user.id
@@ -60,13 +66,13 @@ class FollowersController < ApplicationController
       if f.save
         flash[:notice]="You are now following #{stud.fullname}"
       else
-        #Unknown error O.o
+        #Unknown error O.o this should never come up
         flash[:error]="Something went wrong...Try again"
         redirect_back_or_default('/')
       end
       redirect_to wards_path
     else
- #adding ward during registration
+      #adding ward during registration
       session[:stud_idno] = params[:idno]
       session[:stud_vcode] = params[:vcode]
       redirect_to signup_path

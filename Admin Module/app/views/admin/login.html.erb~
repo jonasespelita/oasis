@@ -39,7 +39,7 @@
       <div>
         <label for="Username">Username:</label>
         <br>
-        <%= text_field_tag :username, params[:username] %>
+        <%= text_field_tag :name, params[:username] %>
       </div>
 			<br>
       <div>
@@ -49,7 +49,9 @@
       </div>
   		<br>
       <div>
-        <%= submit_tag "Login" %>
+      	<span style="position:relative; float:right;">
+        		<%= submit_tag "Login" %>
+        	</span>
       </div>
     </fieldset>
   	<% end %>

@@ -5,6 +5,8 @@ ActionController::Routing::Routes.draw do |map|
   
   
   map.resource :session
+  
+  map.change_password '/change_password', :controller => 'users', :action => 'change_password'
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   map.signup '/signup', :controller => "users", :action => "new"
   map.add_ward  'follow', :controller => "followers", :action =>"new"

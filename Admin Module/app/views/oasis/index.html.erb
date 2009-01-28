@@ -22,7 +22,7 @@
       <div class ="grid_5" id = "logo"><a href="index.html"></a>
 
         <span><b>OASIS</b><br/>Online Access Student Information System</span>
-        <div id="stats" style="margin-top:180px"><b>Following:</b> <%= @profiles.size %> wards<br/><b>Last Visit: </b> <%= @last_login %><br/>
+        <div id="stats" style="margin-top:180px"><b>Following:</b> <%= pluralize(@profiles.size, "ward") %> <br/><b>Last Visit: </b> <%= @last_login %><br/>
 
         </div>
       </div>
@@ -41,7 +41,7 @@
         <span id="date"><%= (Time.now).strftime("%B %d, %Y") %><br/> 1st Semester <br/>S.Y. 08 - 09</span><span id = "username">Welcome <%= current_user.login %>!</span>
 
 
-<div id ="f_topmenu"> <%= link_to "Logout", logout_path %>| <a href="set.html">Settings</a> | <a href="faqs.html">Contact Us </a> <hr/><span id="add"><%= link_to "[+]Add a ward", add_ward_path  %></span></div>
+<div id ="f_topmenu"> <%= link_to "Logout", logout_path %>| <%= link_to "Settings" , change_password_path %> | <a href="faqs.html">Contact Us </a> <hr/><span id="add"><%= link_to "[+]Add a ward", add_ward_path  %></span></div>
       </div>
 
       <div class = "grid_12 " id="a_content" >

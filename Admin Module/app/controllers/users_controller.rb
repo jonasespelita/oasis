@@ -35,9 +35,52 @@ class UsersController < ApplicationController
   def finish
     
   end
+  def change_password
+    @old = params[:old_password]
+  end
+
+
+  #
+  # Change user passowrd
+  def change_password_update
+    if User.authenticate(current_user.login, params[:old_password])
+      if ((params[:password] == params[:password_confirmation]) && !params[:password_confirmation].blank?)
+        current_user.password_confirmation = params[:password_confirmation]
+        current_user.password = params[:password]
+
+        if current_user.save!
+          flash[:notice] = "Password successfully updated"
+          redirect_to change_password_path
+        else
+          flash[:alert] = "Password not changed"
+          render :action => 'change_password'
+        end
+
+      else
+        flash[:alert] = "New Password mismatch"
+        render :action => 'change_password'
+      end
+    else
+      flash[:alert] = "Old password incorrect"
+      render :action => 'change_password'
+    end
+  end
+
+  def change_email
+    current_user.email = params[:email]
+    if current_user.save!
+      flash[:notice] = "Email successfully updated"
+      redirect_to change_password_path
+    else
+      flash[:alert] = "Invalid Email"
+      render :action => 'change_password'
+    end
+  end
 
   def show
     
   end
+
+
 
 end

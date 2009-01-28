@@ -13,8 +13,8 @@ development:
   encoding: unicode
   database: OASIStest_development
   pool: 5
-  username: richie
-  password: hello
+  username: postgres
+  password: password
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have

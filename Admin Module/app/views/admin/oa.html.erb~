@@ -87,9 +87,9 @@ function WebFXMenuButton() {}
 <div class="container">	
 	<div class="admin_title"><b>OASIS Administrator</b></div>
 	<div class="topmenu" style="left:194px;">
-		<a href="login" style="text-decoration:none;">Logout</a>
+		<%= link_to 'Logout', :action => 'logout' %>
 		|
-		<a href="settings" style="text-decoration:none;">Change Password</a>
+		<%= link_to 'Change Password', :action => 'settings' %>
 		<hr />		
 	</div>
 	
@@ -122,6 +122,7 @@ function WebFXMenuButton() {}
 		
 		<fieldset class="fieldset" style="width: 920px; height:195px;">
 			<legend class="groupbox">Administrators</legend>
+			<div style="position:relative; overflow:auto; "onclick="clickEditAdmin()">
 			<script language="text/javascript" type="text/javascript">
 				<!--
 				//  let's create our list object
@@ -129,50 +130,50 @@ function WebFXMenuButton() {}
 				//  set it's width and height  
 				nlr1.setDims(300,100);
 				//  create array for item addition - you can use the same array for the header and items
-				var aa=new Array(5);
+				var aa=new Array(8);
 				//  fill the array with contents (now for the header)
 				aa[0]='Name';
 				aa[1]='Username';
 				aa[2]='Position';
 				aa[3]='Last Visit';
-				aa[4]='Status';
+				aa[4]='Active';
 				//  update the header and redraw
 				nlr1.updateHeader(aa);
-
-				aa[0]='Jennifer Walters';
-				aa[1]='jwalters';
-				aa[2]='User Administrator';
-				aa[3]='September 14,2008';
-				aa[4]='Active';
-				nlr1.silentAdd(aa);
-				aa[0]='Kevin Estrada';
-				aa[1]='kevines';
-				aa[2]='User Administrator';
-				aa[3]='August 10, 2008';
-				aa[4]='Disabled';
-				nlr1.silentAdd(aa);
-				aa[0]='Karlos Ong';
-				aa[1]='karlong';
-				aa[2]='Content Administrator';
-				aa[3]='September 14,2008';
-				aa[4]='Active';
-				nlr1.silentAdd(aa);
-				aa[0]='';
-				aa[1]='';
-				aa[2]='';
-				aa[3]='';
-				aa[4]='';
-				nlr1.silentAdd(aa);
-				aa[0]='';
-				aa[1]='';
-				aa[2]='';
-				aa[3]='';
-				aa[4]='';
-				nlr1.silentAdd(aa);
-
+				<% @admins.each{ |admin| %>
+						<%	unless admin.position == 'oa' %>
+							aa[0]= <%= (admin.first_name + ' ' + admin.last_name).to_json %>
+							aa[1]= <%= admin.username.to_json %>
+							aa[2]= <%= admin.position.to_json %>
+							<% if admin.last_visit.nil? %>
+								aa[3]= 'n/a'
+							<% else %>
+								aa[3]= <%= admin.last_visit.to_json %>
+							<% end %> 
+							aa[4]= <%= admin.active.to_json %>
+							aa[5]= <%= admin.first_name.to_json %>
+							aa[6]= <%= admin.last_name.to_json %>
+							aa[7]= <%= admin.email.to_json %>
+							nlr1.silentAdd(aa)
+						<% end%>
+					<% } %>
+					<% remain = 5 - @admins.length %>
+					<% if remain > 0 %>
+						<% remain.times do %>
+							aa[0]= ''
+							aa[1]= ''
+							aa[2]= ''
+							aa[3]= ''
+							aa[4]= ''
+							aa[5]= ''
+							aa[6]= ''
+							aa[7]= ''
+							nlr1.silentAdd(aa)
+						<% end %>
+					<% end %>
 				nlr1.draw();
 				-->  
 			</script>
+			</div>
 			<div style="position:relative; top:16px; float:right;">				
 				<input type="button" name="btn" value="Edit">
 				<input type="button" name="btn" value="Enable">
@@ -182,118 +183,135 @@ function WebFXMenuButton() {}
 		<br /><br />
 		<fieldset class="fieldset" style="width:920px; height:150px;">
 			<legend class="groupbox">Edit</legend>
-				<div style="float:left; left:30px; text-align:right; width:80px;">
-					<span style="position:relative; top:2px;">
-						First Name: <br />
+				<% form_remote_tag :id => 'edit_admin', :url => { :action => 'edit_admin' } do %>
+				<div style="position:relative; float:left;">
+					<span style="position:relative; top:0px;">
+						<label for="First_name">First name:
+      					<%= text_field_tag :edit_admin_first_name, params[:edit_admin_first_name], :size => 45 %>
+      				</label>
+      				<br>
+      				</br>
 					</span>
-					<span style="position:relative; top:11px;">
-						Middle Name: <br />
-					</span>
-					<span style="position:relative; top:21px;">
-						Last Name: <br />
-					</span>
-					<span style="position:relative; top:31px;">
-						Position:
+					<span style="position:relative; top:6px;">
+						<label for="Last_name">Last name:
+							<span style="position:relative; left:1px;">
+      					<%= text_field_tag :edit_admin_last_name, params[:edit_admin_last_name], :size => 45 %>
+      					</span>
+      				</label>
+      				<br>
+      				</br>
+					</span>						
+						<span style="position:relative; top:12px;">
+							<label for="Position">Position:
+							<span style="position:relative; left:15px;">
+      					<%= text_field_tag :edit_admin_position, params[:edit_admin_position], :size => 45 %>
+      					</span>
+      					</label>
+      				<br>
+      				</br>
 					</span>
 				</div>
-				<div style="position:relative; float:left; width: 80px;">
+				<div style="position:absolute; left:480px;">
 					<span style="position:relative; top:0px;">
-						<input type="text" size="50" /><br />
+						<label for="Username">Username:
+							<span style="position:relative;">
+      					<%= text_field_tag :edit_admin_username, params[:edit_admin_username], :size => 45 %>
+      					</span>
+      				</label>
+      				<br>
+      				</br>
 					</span>
-					<span style="position:relative; top:4px;">
-						<input type="text" size="50" /><br />
-					</span>
-					<span style="position:relative; top:8px;">
-						<input type="text" size="50" />
+					<span style="position:relative; top:6px;">
+						<label for="Password">Password:
+							<span style="position:relative; left:2px">
+      					<%= text_field_tag :edit_admin_password, params[:edit_admin_password], :size => 45 %>
+      					</span>
+      				</label>
+      				<br>
+      				</br>
 					</span>
 					<span style="position:relative; top:12px;">
-						<select><option>User Administrator</option><option>Content Administrator</option></select><br />
-					</span>
-				</div>
-				<div style="position:absolute; float:left;left:450px; text-align:right; width:80px;">
-					<span style="position:relative; top:2px;">
-						Username: <br />
-					</span>
-					<span style="position:relative; top:11px;">
-						Password: <br />
-					</span>
-					<span style="position:relative; top:21px;">
-						E-mail: <br />
-					</span>
-				</div>
-				<div style="position:absolute; left:532px; width:80px;">
-					<span style="position:relative; top:0px;">
-						<input type="text" size="50">
-					</span>
-					<span style="position:relative; top:4px;">
-						<input type="text" size="50">
-					</span>
-					<span style="position:relative; top:8px;">
-						<input type="text" size="50">
+						<label for="Email">Email:
+							<span style="position:relative;left:26px">
+      					<%= text_field_tag :edit_admin_email, params[:edit_admin_email], :size => 45 %>
+      					</span>
+      				</label>
+      				<br>
+      				</br>
 					</span>
 				</div>				 
-			<div style="position:relative; float:right; top:111px;">
-				<input type="button" value="Save">
-				<input type="button" value="Clear">		  
+			<div style="position:relative; float:right; top:100px; left:-5px">
+				<%= submit_tag "Save" %>
+				<%= button_to_function "Clear", "clearAdminEdit()" %>	  
 			</div>
+			<% end %>
 	    </fieldset>		
 		<br /><br />
 		<fieldset class="fieldset" style="width: 920px; height:150px;">
 			<legend class="groupbox">Add New</legend>
-		  				<div style="float:left; left:30px; text-align:right; width:80px;">
-					<span style="position:relative; top:2px;">
-						First Name: <br />
+		  		<% form_remote_tag :id => 'add_admin', :url => { :action => 'add_admin' } do %>
+				<div style="position:relative; float:left;">
+					<span style="position:relative; top:0px;">
+						<label for="First_name">First name:
+      					<%= text_field_tag :add_admin_first_name, params[:add_admin_first_name], :size => 45 %>
+      				</label>
+      				<br>
+      				</br>
 					</span>
-					<span style="position:relative; top:11px;">
-						Middle Name: <br />
-					</span>
-					<span style="position:relative; top:21px;">
-						Last Name: <br />
-					</span>
-					<span style="position:relative; top:31px;">
-						Position:
+					<span style="position:relative; top:6px;">
+						<label for="Last_name">Last name:
+							<span style="position:relative; left:1px;">
+      					<%= text_field_tag :add_admin_last_name, params[:add_admin_last_name], :size => 45 %>
+      					</span>
+      				</label>
+      				<br>
+      				</br>
+					</span>						
+						<span style="position:relative; top:12px;">
+							<label for="Position">Position:
+							<span style="position:relative; left:15px;">
+      					<%= text_field_tag :add_admin_position, params[:add_admin_position], :size => 45 %>
+      					</span>
+      					</label>
+      				<br>
+      				</br>
 					</span>
 				</div>
-				<div style="position:relative; float:left; width: 80px;">
+			
+				<div style="position:absolute; left:480px;">
 					<span style="position:relative; top:0px;">
-						<input type="text" size="50" /><br />
+						<label for="Username">Username:
+							<span style="position:relative;">
+      					<%= text_field_tag :add_admin_username, params[:add_admin_username], :size => 45 %>
+      					</span>
+      				</label>
+      				<br>
+      				</br>
 					</span>
-					<span style="position:relative; top:4px;">
-						<input type="text" size="50" /><br />
-					</span>
-					<span style="position:relative; top:8px;">
-						<input type="text" size="50" />
+					<span style="position:relative; top:6px;">
+						<label for="Password">Password:
+							<span style="position:relative; left:2px">
+      					<%= text_field_tag :add_admin_password, params[:add_admin_password], :size => 45 %>
+      					</span>
+      				</label>
+      				<br>
+      				</br>
 					</span>
 					<span style="position:relative; top:12px;">
-						<select><option>User Administrator</option><option>Content Administrator</option></select><br />
-					</span>
-				</div>
-				<div style="position:absolute; float:left;left:450px; text-align:right; width:80px;">
-					<span style="position:relative; top:2px;">
-						Username: <br />
-					</span>
-					<span style="position:relative; top:11px;">
-						Password: <br />
-					</span>
-					<span style="position:relative; top:21px;">
-						E-mail: <br />
-					</span>
-				</div>
-				<div style="position:absolute; left:532px; width:80px;">
-					<span style="position:relative; top:0px;">
-						<input type="text" size="50">
-					</span>
-					<span style="position:relative; top:4px;">
-						<input type="text" size="50">
-					</span>
-					<span style="position:relative; top:8px;">
-						<input type="text" size="50">
+						<label for="Email">Email:
+							<span style="position:relative;left:26px">
+      					<%= text_field_tag :add_admin_email, params[:add_admin_email], :size => 45 %>
+      					</span>
+      				</label>
+      				<br>
+      				</br>
 					</span>
 				</div>				 
-			<div style="position:relative; float:right; top:110px;">
-				<input type="button" value="Save">
-				<input type="button" value="Clear">		  
+			<div style="position:relative; float:right; top:100px; left:-5px;">
+				<%= submit_tag "Save" %>
+				<%= button_to_function "Clear", "clearAdminAdd()" %>	  	  
 			</div>
+			<% end %>
 	    </fieldset>
 		
 	  </div>

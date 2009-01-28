@@ -1,17 +1,20 @@
 class AdminController < ApplicationController
 	before_filter :authorize, :except => :login
-	
 
 	def index
 		@campus_activities = CampusActivities.find(:all)
 		@announcements = Announcements.find(:all)
+		@admins = Admin.find(:all)
 		admin = Admin.find(session[:admin_id])
 		if admin.position == 'oa'
-			redirect_to(:action => "oa")
+					@is_oa = true
+  		else
+					@is_oa = false
 		end
 	end
 
   def oa
+  	@admins = Admin.find(:all)
   	admin = Admin.find(session[:admin_id])
 		if admin.position != 'oa'
 			redirect_to(:action => "index")
@@ -23,14 +26,13 @@ class AdminController < ApplicationController
   	session[:admin_id] = nil
   	if request.post?
   		admin = Admin.authenticate(params[:name], params[:password])
-  		if admin
-  			if admin.position == 'oa'
-					session[:admin_id] = admin.id
-					redirect_to(:action => "oa")
-  			else
-					session[:admin_id] = admin.id
-					redirect_to(:action => "index")
-				end
+  		if admin && admin.active == true
+			session[:admin_id] = admin.id
+			admin.last_visit = Time.now
+			admin.save
+			redirect_to(:action => "index")
+  		elsif admin.active == false
+  			flash.now[:notice] = "Your account has been disabled"
   		else
   			flash.now[:notice] = "Invalid user/password combination"
   		end
@@ -91,6 +93,16 @@ class AdminController < ApplicationController
   	redirect_to(:action => "index")
   end
   
+  	def delete_activity
+	  	deleted_activity = CampusActivities.find(params[:delete_activity_id])
+	  	unless deleted_activity.destroy
+	  		redirect_to(:action => "index")
+	  		flash[:notice] = "not deleted"
+	  	end
+	  	redirect_to(:action => "index")
+  	
+	end
+  
   def edit_announcement
 		unless params[:edit_announcement_id].blank?
 			edited_announcement = Announcements.find(params[:edit_announcement_id])
@@ -120,15 +132,88 @@ class AdminController < ApplicationController
   	redirect_to(:action => "index")
   end
   
-  def delete_announcement
-  	deleted_announcement = Announcements.find(params[:delete_announcement_id])
-  	unless deleted_announcement.destroy
-  		redirect_to(:action => "index")
-  		flash[:notice] = "not deleted"
-  	end
-  	redirect_to(:action => "index")
+	def delete_announcement
+	  	deleted_announcement = Announcements.find(params[:delete_announcement_id])
+	  	unless deleted_announcement.destroy
+	  		redirect_to(:action => "index")
+	  		flash[:notice] = "not deleted"
+	  	end
+	  	redirect_to(:action => "index")
   	
 	end
+	
+	def add_admin
+		new_admin = Admin.new
+		new_admin.first_name = params[:add_admin_first_name]
+		new_admin.last_name = params[:add_admin_last_name]
+		new_admin.position = params[:add_admin_position]
+		new_admin.username = params[:add_admin_username]
+		new_admin.email = params[:add_admin_email]
+		new_admin.active = true
+		new_admin.create_password(params[:add_admin_password])
+		unless new_admin.save
+  			redirect_to(:action => "index")
+  		flash[:notice] = "not saved"
+  		end
+  		redirect_to(:action => "index")
+	end
+	
+	def edit_admin
+  		unless params[:edit_admin_id].blank?
+			edit_admin = Admin.find(params[:edit_admin_id])
+			edit_admin.first_name = params[:edit_admin_first_name]
+			edit_admin.last_name = params[:edit_admin_last_name]
+			edit_admin.position = params[:edit_admin_position]
+			edit_admin.username = params[:edit_admin_username]
+			edit_admin.email = params[:edit_admin_email]
+			unless params[:edit_admin_password].blank?
+				edit_admin.create_password(params[:edit_admin_password])
+			end
+			unless edit_admin.save
+	  		redirect_to(:action => "index")
+	  		flash[:notice] = "not saved"
+	  		end
+	  		
+  		else
+			redirect_to(:action => "index")
+			flash[:notice] = "Please select an admin to be edited"
+		end
+		redirect_to(:action => "index")
+	end
+	
+	def enable_admin
+		unless params[:enable_admin_id].blank?
+			enable_admin = Admin.find(params[:enable_admin_id])
+			enable_admin.active = true
+			unless enable_admin.save
+	  		redirect_to(:action => "index")
+	  		flash[:notice] = "not saved"
+	  		end
+	  		redirect_to(:action => "index")
+	  	else
+	  		redirect_to(:action => "index")
+			flash[:notice] = "Please select an admin"
+		end
+		
+	end
+	
+	def disable_admin
+		unless params[:disable_admin_id].blank?
+			disable_admin = Admin.find(params[:disable_admin_id])
+			disable_admin.active = false
+			unless disable_admin.save
+	  		redirect_to(:action => "index")
+	  		flash[:notice] = "not saved"
+	  		end
+	  		redirect_to(:action => "index")
+	  	else
+	  		redirect_to(:action => "index")
+			flash[:notice] = "Please select an admin"
+		end
+		
+	end
+	
+		
   
   protected
   	def authorize

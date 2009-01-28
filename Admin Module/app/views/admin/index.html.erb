@@ -114,8 +114,254 @@ function WebFXMenuButton() {}
 	//tp1.setClassNameTag( "dynamic-tab-pane-control-luna" );
 	//alert( 0 )
 	</script>
-
-
+	<% if @is_oa %>
+	 <div class="tab-page" id="tabPage1">
+	    <h2 class="tab">Administrator Management</h2>
+	    
+	    <script type="text/javascript">tp1.addTabPage( document.getElementById( "tabPage1" ) );</script>
+		
+		<fieldset class="fieldset" style="width: 920px; height:195px;">
+			<legend class="groupbox">Administrators</legend>
+			<div style="position:relative; overflow:auto; "onclick="clickEditAdmin()">
+			<script language="text/javascript" type="text/javascript">
+				<!--
+				//  let's create our list object
+				var nlr1=new mylist('nlr1','dvia1',5,200,180,177,200,150);
+				//  set it's width and height  
+				nlr1.setDims(300,100);
+				//  create array for item addition - you can use the same array for the header and items
+				var aa=new Array(9);
+				//  fill the array with contents (now for the header)
+				aa[0]='Name';
+				aa[1]='Username';
+				aa[2]='Position';
+				aa[3]='Last Visit';
+				aa[4]='Active';
+				//  update the header and redraw
+				nlr1.updateHeader(aa);
+				<% @admins.each{ |admin| %>
+						<%	unless admin.position == 'oa' %>
+							aa[0]= <%= (admin.first_name + ' ' + admin.last_name).to_json %>
+							aa[1]= <%= admin.username.to_json %>
+							aa[2]= <%= admin.position.to_json %>
+							<% if admin.last_visit.nil? %>
+								aa[3]= 'n/a'
+							<% else %>
+								aa[3]= <%= admin.last_visit.to_json %>
+							<% end %> 
+							aa[4]= <%= admin.active.to_json %>
+							aa[5]= <%= admin.first_name.to_json %>
+							aa[6]= <%= admin.last_name.to_json %>
+							aa[7]= <%= admin.email.to_json %>
+							aa[8]= <%= admin.id.to_json %>
+							nlr1.silentAdd(aa)
+						<% end%>
+					<% } %>
+					<% remain = 5 - @admins.length %>
+					<% if remain > 0 %>
+						<% remain.times do %>
+							aa[0]= ''
+							aa[1]= ''
+							aa[2]= ''
+							aa[3]= ''
+							aa[4]= ''
+							aa[5]= ''
+							aa[6]= ''
+							aa[7]= ''
+							aa[8]= ''
+							nlr1.silentAdd(aa)
+						<% end %>
+					<% end %>
+				nlr1.draw();
+				-->  
+			</script>
+			</div>
+			<div style="position:relative;top:16px; float:right;left:-20px ">				
+				<input type="button" name="btn" value="Edit"onclick="clickEditAdmin()">
+				<%= button_to_function "Enable", "enableAdmin()" %>	 
+				<%= button_to_function "Disable", "disableAdmin()" %>	 
+			</div>
+	    </fieldset>
+		<br /><br />
+		<fieldset class="fieldset" style="width:920px; height:150px;">
+			<legend class="groupbox">Edit</legend>
+				<% form_remote_tag :id => 'edit_admin', :url => { :action => 'edit_admin' } do %>
+				<div style="position:relative; float:left;">
+					<span style="position:relative; top:0px;">
+						<label for="First_name">First name:
+      					<%= text_field_tag :edit_admin_first_name, params[:edit_admin_first_name], :size => 45 %>
+      					<%= hidden_field_tag :edit_admin_id, params[:edit_admin_id] %>
+      				</label>
+      				<br>
+      				</br>
+					</span>
+					<span style="position:relative; top:6px;">
+						<label for="Last_name">Last name:
+							<span style="position:relative; left:1px;">
+      					<%= text_field_tag :edit_admin_last_name, params[:edit_admin_last_name], :size => 45 %>
+      					</span>
+      				</label>
+      				<br>
+      				</br>
+					</span>						
+						<span style="position:relative; top:12px;">
+							<label for="Position">Position:
+							<span style="position:relative; left:15px;">
+      					<%= text_field_tag :edit_admin_position, params[:edit_admin_position], :size => 45 %>
+      					</span>
+      					</label>
+      				<br>
+      				</br>
+					</span>
+				</div>
+				<div style="position:absolute; left:480px;">
+					<span style="position:relative; top:0px;">
+						<label for="Username">Username:
+							<span style="position:relative;">
+      					<%= text_field_tag :edit_admin_username, params[:edit_admin_username], :size => 45 %>
+      					</span>
+      				</label>
+      				<br>
+      				</br>
+					</span>
+					<span style="position:relative; top:6px;">
+						<label for="Password">Password:
+							<span style="position:relative; left:2px">
+      					<%= text_field_tag :edit_admin_password, params[:edit_admin_password], :size => 45 %>
+      					</span>
+      				</label>
+      				<br>
+      				</br>
+					</span>
+					<span style="position:relative; top:12px;">
+						<label for="Email">Email:
+							<span style="position:relative;left:26px">
+      					<%= text_field_tag :edit_admin_email, params[:edit_admin_email], :size => 45 %>
+      					</span>
+      				</label>
+      				<br>
+      				</br>
+					</span>
+				</div>				 
+			<div style="position:relative; float:right; top:100px; left:-5px">
+				<%= submit_tag "Save" %>
+				<%= button_to_function "Clear", "clearAdminEdit()" %>	  
+			</div>
+			<% end %>
+	    </fieldset>		
+		<br /><br />
+		<fieldset class="fieldset" style="width: 920px; height:150px;">
+			<legend class="groupbox">Add New</legend>
+		  		<% form_remote_tag :id => 'add_admin', :url => { :action => 'add_admin' } do %>
+				<div style="position:relative; float:left;">
+					<span style="position:relative; top:0px;">
+						<label for="First_name">First name:
+      					<%= text_field_tag :add_admin_first_name, params[:add_admin_first_name], :size => 45 %>
+      				</label>
+      				<br>
+      				</br>
+					</span>
+					<span style="position:relative; top:6px;">
+						<label for="Last_name">Last name:
+							<span style="position:relative; left:1px;">
+      					<%= text_field_tag :add_admin_last_name, params[:add_admin_last_name], :size => 45 %>
+      					</span>
+      				</label>
+      				<br>
+      				</br>
+					</span>						
+						<span style="position:relative; top:12px;">
+							<label for="Position">Position:
+							<span style="position:relative; left:15px;">
+      					<%= text_field_tag :add_admin_position, params[:add_admin_position], :size => 45 %>
+      					</span>
+      					</label>
+      				<br>
+      				</br>
+					</span>
+				</div>
+			
+				<div style="position:absolute; left:480px;">
+					<span style="position:relative; top:0px;">
+						<label for="Username">Username:
+							<span style="position:relative;">
+      					<%= text_field_tag :add_admin_username, params[:add_admin_username], :size => 45 %>
+      					</span>
+      				</label>
+      				<br>
+      				</br>
+					</span>
+					<span style="position:relative; top:6px;">
+						<label for="Password">Password:
+							<span style="position:relative; left:2px">
+      					<%= text_field_tag :add_admin_password, params[:add_admin_password], :size => 45 %>
+      					</span>
+      				</label>
+      				<br>
+      				</br>
+					</span>
+					<span style="position:relative; top:12px;">
+						<label for="Email">Email:
+							<span style="position:relative;left:26px">
+      					<%= text_field_tag :add_admin_email, params[:add_admin_email], :size => 45 %>
+      					</span>
+      				</label>
+      				<br>
+      				</br>
+					</span>
+				</div>				 
+			<div style="position:relative; float:right; top:100px; left:-5px;">
+				<%= submit_tag "Save" %>
+				<%= button_to_function "Clear", "clearAdminAdd()" %>	  	  
+			</div>
+			<% end %>
+	    </fieldset>
+		<% form_tag '/admin/enable_admin', :id => "enable_admin" do %>
+		  <%= hidden_field_tag :enable_admin_id, params[:enable_admin_id] %>
+		<% end %>
+		<% form_tag '/admin/disable_admin', :id => "disable_admin" do %>
+		  <%= hidden_field_tag :disable_admin_id, params[:disable_admin_id] %>
+		<% end %>
+	  </div>
+	 
+	  <script language="text/javascript" type="text/javascript">
+			function clickEditAdmin() {
+				var i = nlr1.selected;
+				document.getElementById("edit_admin_first_name").value = nlr1.elements[i][5];
+				document.getElementById("edit_admin_last_name").value = nlr1.elements[i][6];
+				document.getElementById("edit_admin_position").value = nlr1.elements[i][2];
+				document.getElementById("edit_admin_username").value = nlr1.elements[i][1];
+				document.getElementById("edit_admin_password").value = ""
+				document.getElementById("edit_admin_email").value = nlr1.elements[i][7];
+				document.getElementById("edit_admin_id").value = nlr1.elements[i][8];		
+				document.getElementById("disable_admin_id").value = nlr1.elements[i][8];	
+				document.getElementById("enable_admin_id").value = nlr1.elements[i][8];	
+				
+			}
+			function clearAdminAdd() {
+				document.getElementById("add_admin_first_name").value = ""
+				document.getElementById("add_admin_last_name").value = ""
+				document.getElementById("add_admin_position").value = ""
+				document.getElementById("add_admin_username").value = ""		
+				document.getElementById("add_admin_password").value = ""
+				document.getElementById("add_admin_email").value = ""	
+			}
+			function clearAdminEdit() {
+				document.getElementById("edit_admin_first_name").value = ""
+				document.getElementById("edit_admin_last_name").value = ""
+				document.getElementById("edit_admin_position").value = ""
+				document.getElementById("edit_admin_username").value = ""		
+				document.getElementById("edit_admin_password").value = ""
+				document.getElementById("edit_admin_email").value = ""		
+			}
+			function enableAdmin(){
+				document.getElementById("enable_admin").submit();
+			}
+			function disableAdmin(){
+				document.getElementById("disable_admin").submit();	
+			}
+		</script>
+       <% end %>
 	  <div class="tab-page" id="tabPage2">
 	    <h2 class="tab">System Reports</h2>
 	    
@@ -158,7 +404,7 @@ function WebFXMenuButton() {}
 						ab[1]='471';
 						ab[2]='409';
 						nlr2.silentAdd(ab);
-						
+						<span style="position:relative; float:right; left:230px;">
 						ab[0]='September 15, 2008'
 						ab[1]='381';
 						ab[2]='287';
@@ -296,7 +542,7 @@ function WebFXMenuButton() {}
 
 						
 						nlr2.draw();
-						-->  
+						-->
 					  </script>
 					 </div>
 					 <br />
@@ -558,10 +804,10 @@ function WebFXMenuButton() {}
 	    
 	    <script type="text/javascript">tp1.addTabPage( document.getElementById( "tabPage2" ) );</script>
 	    
-		<div class="sys_groupbox1">
+		<div class="sys_groupbox1" >
 			<fieldset class="fieldset" style="width: 400px; height:574px;">
 				<legend class="groupbox">Activities</legend>
-				<div style="position:relative; overflow:auto; height:520px; top:4px;">
+				<div style="position:relative; overflow:auto; height:520px; top:4px;" onclick="clickEditAct()">
 				<script language="text/javascript" type="text/javascript">
 					<!--
 					//  let's create our list object
@@ -600,7 +846,7 @@ function WebFXMenuButton() {}
 				</script>
 				</div>				
 				
-				<input type="button" name="btn" value="Delete" style="position:relative;float:right; top:13px;">
+				<input type="button" name="btn" value="Delete" style="position:relative;float:right; top:13px;" onclick="clickDeleteAct()">
 				<input type="button" name="btn" value="Edit" style="position:relative;float:right; top:13px; left:-5px;" onclick="clickEditAct()">
 		    </fieldset>
 		</div>
@@ -633,10 +879,10 @@ function WebFXMenuButton() {}
 										<%= text_area_tag  :edit_activity_summary, params[:edit_activity_summary], :size => "40x9" %>
 										<%= hidden_field_tag :edit_activity_id, params[:edit_activity_id] %>
 									</span>
-									<span style="position:relative; top:35px; float:right; left:172px;">
+									<span style="position:relative; top:25px; float:right; left:172px;">
 										<%= submit_tag "Save" %>
 									</span>
-									<span style="position:relative; top:14px; float:right; left:230px;">
+									<span style="position:relative; float:right; left:230px;">
 										<%= button_to_function "Clear", "clearActEdit()" %>
 									</span>
 								</div>
@@ -670,13 +916,16 @@ function WebFXMenuButton() {}
 									<span style="position:relative; top:20px;">
 										<%= text_area_tag :add_activity_summary, params[:add_activity_summary], :size => "40x9" %>
 									</span>
-									<span style="position:relative; top:35px; float:right; left:172px;">
+									<span style="position:relative; top:25px; float:right; left:172px;">
 										<%= submit_tag "Save" %>
 									</span>
-									<span style="position:relative; top:14px; float:right; left:230px;">
+									<span style="position:relative; float:right; left:230px;">
 										<%= button_to_function "Clear", "clearActAdd()" %>
 									</span>
 								</div>
+						<% end %>
+						<% form_tag '/admin/delete_activity', :id => "delete_act" do %>
+							<%= hidden_field_tag :delete_activity_id, params[:delete_activity_id] %>
 						<% end %>
 					</div>
 		    </fieldset>
@@ -703,6 +952,11 @@ function WebFXMenuButton() {}
 				document.getElementById("edit_activity_summary").value = ""
 				document.getElementById("edit_activity_id").value = ""		
 			}
+			function clickDeleteAct(){
+				var i = nlr9.selected;
+				document.getElementById("delete_activity_id").value = nlr9.elements[i][3];
+				document.getElementById("delete_act").submit();	
+			}
 		</script>
 
 	  
@@ -714,7 +968,7 @@ function WebFXMenuButton() {}
 		<div class="sys_groupbox1">
 			<fieldset class="fieldset" style="width: 400px; height:574px;">
 				<legend class="groupbox">Annoucements</legend>
-				<div style="position:relative; overflow:auto; height:520px; top:4px;">
+				<div style="position:relative; overflow:auto; height:520px; top:4px;"onclick="clickEditAnn()">
 				<script language="text/javascript" type="text/javascript">
 					<!--
 					//  let's create our list object
@@ -785,15 +1039,15 @@ function WebFXMenuButton() {}
 										<%= hidden_field_tag :edit_announcement_id, params[:edit_announcement_id] %>
 										
 									</span>
-									<span style="position:relative; top:35px; float:right; left:172px;">
+									<span style="position:relative; top:25px; float:right; left:172px;">
 										<%= submit_tag "Save" %>
 									</span>
-									<span style="position:relative; top:14px; float:right; left:230px;">
+									<span style="position:relative; float:right; left:230px;">
 										<%= button_to_function "Clear", "clearAnnEdit()" %>
 									</span>
 								</div>
 						<% end %>
-						<% form_tag "delete_ann" do %>
+						<% form_tag '/admin/delete_announcement', :id => "delete_ann" do %>
 							<%= hidden_field_tag :delete_announcement_id, params[:delete_announcement_id] %>
 						<% end %>
 					</div>					
@@ -826,10 +1080,10 @@ function WebFXMenuButton() {}
 									<span style="position:relative; top:20px;">
 										<%= text_area_tag :add_announcement_summary, params[:add_announcement_summary], :size => "40x9" %>
 									</span>
-									<span style="position:relative; top:35px; float:right; left:172px;">
+									<span style="position:relative; top:25px; float:right; left:172px;">
 										<%= submit_tag "Save" %>
 									</span>
-									<span style="position:relative; top:14px; float:right; left:230px;">
+									<span style="position:relative; float:right; left:230px;">
 										<%= button_to_function "Clear", "clearAnnAdd()" %>
 									</span>
 								</div>
@@ -862,10 +1116,7 @@ function WebFXMenuButton() {}
 			function clickDeleteAnn(){
 				var j = nlr10.selected;
 				document.getElementById("delete_announcement_id").value = nlr10.elements[j][3];
-				document.getElementById("delete_ann").action = "delete_announcement";
-				document.getElementById("delete_ann").submit();
-				
-				
+				document.getElementById("delete_ann").submit();	
 			}
 				
 		</script>

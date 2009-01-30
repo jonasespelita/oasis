@@ -5,6 +5,8 @@ class AdminController < ApplicationController
 		@campus_activities = CampusActivities.find(:all)
 		@announcements = Announcements.find(:all)
 		@admins = Admin.find(:all)
+		@queries = Query.find(:all)
+		@users = User.find(:all)
 		admin = Admin.find(session[:admin_id])
 		if admin.position == 'oa'
 					@is_oa = true
@@ -211,6 +213,15 @@ class AdminController < ApplicationController
 			flash[:notice] = "Please select an admin"
 		end
 		
+	end
+	
+	def delete_query
+		redirect_to("mailto:richardjc_lareth@yahoo.com")
+		redirect_to_index
+	end
+	
+	def redirect_to_index
+		redirect_to(:action => "index")
 	end
 	
 		

@@ -215,6 +215,10 @@ class AdminController < ApplicationController
 		
 	end
 	
+	def delete_query
+		redirect_to(:action => "index")
+	end
+
 		
   
   protected

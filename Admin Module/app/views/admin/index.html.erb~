@@ -1279,7 +1279,7 @@ function WebFXMenuButton() {}
 		<div class="sys_groupbox2">
 			<fieldset class="fieldset" style="width:430px; height:573px;">
 				<legend class="groupbox">Edit</legend>
-					<div style="float:left; left:10px; text-align:right; width:155px; overflow:auto">
+					<div style="float:left; left:10px; text-align:right; width:155px;">
 						<span style="position:relative; top:3px;">
 							Name: <br />
 						</span>
@@ -1331,15 +1331,15 @@ function WebFXMenuButton() {}
 		<br /><br />
 		
 		<fieldset class="fieldset" style="width:920px; height:240px;">
-
+			<div style="position:relative; overflow:auto;"onclick="clickUserQuery()">
 			<script language="text/javascript" type="text/javascript">
 				<!--
 				//  let's create our list object
 				var nlr6=new mylist('nlr6','dvia6',4,230,200,320,150);
 				//  set it's width and height  
-				nlr6.setDims(300,100);
+				nlr6.setDims(300,80);
 				//  create array for item addition - you can use the same array for the header and items
-				var af=new Array(4);
+				var af=new Array(6);
 				//  fill the array with contents (now for the header)
 				af[0]='From';
 				af[1]='E-mail';
@@ -1355,6 +1355,8 @@ function WebFXMenuButton() {}
 						af[1]= <%= cur_user.email.to_json %>
 						af[2]= <%= query.subject.to_json %>
 						af[3]= <%= query.created_at.to_json %>
+						af[4]= <%= query.message.to_json %>
+						af[5]= <%= query.id.to_json %>
 						nlr6.silentAdd(af)
 					<% } %>
 					<% remain = 9 - @queries.length %>
@@ -1364,6 +1366,8 @@ function WebFXMenuButton() {}
 							af[1]= ''
 							af[2]= ''
 							af[3]= ''
+							af[4]= ''
+							af[5]= ''
 							nlr6.silentAdd(af)
 						<% end %>
 					<% end %>			
@@ -1371,19 +1375,21 @@ function WebFXMenuButton() {}
 				nlr6.draw();
 				-->  
 			</script>
+			</div>
 			<div style="position:absolute; top:263px; width:96%;">
 				<span style="position:relative; float:right">
-					<input type="button" value="Reply"> <input type="button" value="Delete">
+					<%= button_to_function 'Reply', "openEmail()" %> 
+					<%= button_to_function "Delete", "deleteUserQuery()" %>
 				</span>
 			</div>
-			
 		</fieldset>
+		
 	    
 		<fieldset class="fieldset" style="width: 920px; height: 80px;">
 		<legend class="groupbox">Sender</legend>
 		<label for="First_name">From:
       					<%= text_field_tag :message_sender, nil, :size => 45 %>
-      				</label><br>
+      				</label><br> <br>
 		<label for="First_name">Subject:
       					<%= text_field_tag :message_subject, nil, :size => 45 %>
       				</label>
@@ -1392,10 +1398,30 @@ function WebFXMenuButton() {}
 		<fieldset class="fieldset" style="width: 920px; height: 208px;">
 		<legend class="groupbox">Message</legend>
 		<%= text_area_tag :message_area, nil, :size => "129x10" %>
-		</fieldset>
 		
+		</fieldset>
+		<% form_tag '/admin/delete_query', :id => "delete_query" do %>
+							<%= hidden_field_tag :delete_user_query_id, params[:delete_user_query_id] %>
+		<% end %>
 	  </div>
-	  
+	  <script language="text/javascript" type="text/javascript">
+			function clickUserQuery() {
+				var i = nlr6.selected;
+				document.getElementById("message_sender").value = nlr6.elements[i][0];
+				document.getElementById("message_subject").value = nlr6.elements[i][2];
+				document.getElementById("message_area").value = nlr6.elements[i][4];
+				document.getElementById("delete_user_query_id").value = nlr6.elements[i][5];	
+				
+					
+			}
+			function deleteUserQuery() {
+				document.getElementById("delete_query").submit();
+			}
+			function openEmail() {
+				var i = nlr6.selected;
+				window.open("mailto:" + nlr6.elements[i][1]);
+			}
+		</script>
 		
 	<div style="position:relative; float:right; left:-9px;">
 		Website Status: <select><option>Online</option><option>Offline</option></select> <input type="button" value="Change">

@@ -216,6 +216,11 @@ class AdminController < ApplicationController
 	end
 	
 	def delete_query
+		deleted_query = Query.find(params[:delete_user_query_id])
+		unless deleted_query.destroy
+	  		redirect_to(:action => "index")
+	  		flash[:notice] = "not deleted"
+	  	end
 		redirect_to(:action => "index")
 	end
 

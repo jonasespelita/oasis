@@ -216,14 +216,9 @@ class AdminController < ApplicationController
 	end
 	
 	def delete_query
-		redirect_to("mailto:richardjc_lareth@yahoo.com")
-		redirect_to_index
-	end
-	
-	def redirect_to_index
 		redirect_to(:action => "index")
 	end
-	
+
 		
   
   protected

@@ -1335,16 +1335,17 @@ function WebFXMenuButton() {}
 			<script language="text/javascript" type="text/javascript">
 				<!--
 				//  let's create our list object
-				var nlr6=new mylist('nlr6','dvia6',4,230,200,320,150);
+				var nlr6=new mylist('nlr6','dvia6',5,210,190,300,140,60);
 				//  set it's width and height  
 				nlr6.setDims(300,80);
 				//  create array for item addition - you can use the same array for the header and items
-				var af=new Array(6);
+				var af=new Array(7);
 				//  fill the array with contents (now for the header)
 				af[0]='From';
 				af[1]='E-mail';
 				af[2]='Subject';				
 				af[3]='Date/Time';
+				af[4]='Resolved';
 
 				//  update the header and redraw
 				nlr6.updateHeader(af);
@@ -1355,8 +1356,9 @@ function WebFXMenuButton() {}
 						af[1]= <%= cur_user.email.to_json %>
 						af[2]= <%= query.subject.to_json %>
 						af[3]= <%= query.created_at.to_json %>
-						af[4]= <%= query.message.to_json %>
-						af[5]= <%= query.id.to_json %>
+						af[4]= <%= query.resolved.to_json %>
+						af[5]= <%= query.message.to_json %>
+						af[6]= <%= query.id.to_json %>
 						nlr6.silentAdd(af)
 					<% } %>
 					<% remain = 9 - @queries.length %>
@@ -1367,6 +1369,7 @@ function WebFXMenuButton() {}
 							af[2]= ''
 							af[3]= ''
 							af[4]= ''
+							af[5]= ''
 							af[5]= ''
 							nlr6.silentAdd(af)
 						<% end %>
@@ -1380,6 +1383,7 @@ function WebFXMenuButton() {}
 				<span style="position:relative; float:right">
 					<%= button_to_function 'Reply', "openEmail()" %> 
 					<%= button_to_function "Delete", "deleteUserQuery()" %>
+					<%= button_to_function 'Resolved', "resolveQuery()" %> 
 				</span>
 			</div>
 		</fieldset>
@@ -1403,14 +1407,18 @@ function WebFXMenuButton() {}
 		<% form_tag '/admin/delete_query', :id => "delete_query" do %>
 							<%= hidden_field_tag :delete_user_query_id, params[:delete_user_query_id] %>
 		<% end %>
+		<% form_tag '/admin/resolve_query', :id => "resolve_query" do %>
+							<%= hidden_field_tag :resolve_user_query_id, params[:resolve_user_query_id] %>
+		<% end %>
 	  </div>
 	  <script language="text/javascript" type="text/javascript">
 			function clickUserQuery() {
 				var i = nlr6.selected;
 				document.getElementById("message_sender").value = nlr6.elements[i][0];
 				document.getElementById("message_subject").value = nlr6.elements[i][2];
-				document.getElementById("message_area").value = nlr6.elements[i][4];
-				document.getElementById("delete_user_query_id").value = nlr6.elements[i][5];	
+				document.getElementById("message_area").value = nlr6.elements[i][5];
+				document.getElementById("delete_user_query_id").value = nlr6.elements[i][6];	
+				document.getElementById("resolve_user_query_id").value = nlr6.elements[i][6];
 				
 					
 			}
@@ -1420,6 +1428,9 @@ function WebFXMenuButton() {}
 			function openEmail() {
 				var i = nlr6.selected;
 				window.location = "mailto:" + nlr6.elements[i][1];
+			}
+			function resolveQuery() {
+				document.getElementById("resolve_query").submit();
 			}
 		</script>
 		

@@ -5,6 +5,8 @@ class AdminController < ApplicationController
 		@campus_activities = CampusActivities.find(:all)
 		@announcements = Announcements.find(:all)
 		@admins = Admin.find(:all)
+		@queries = Query.find(:all)
+		@users = User.find(:all)
 		admin = Admin.find(session[:admin_id])
 		if admin.position == 'oa'
 					@is_oa = true

@@ -182,10 +182,10 @@ class AdminController < ApplicationController
 	end
 	
 	def enable_admin
-		unless params[:edit_admin_id].blank?
-			edit_admin = Admin.find(params[:edit_admin_id])
-			edit_admin.active = true
-			unless edit_admin.save
+		unless params[:enable_admin_id].blank?
+			enable_admin = Admin.find(params[:enable_admin_id])
+			enable_admin.active = true
+			unless enable_admin.save
 	  		redirect_to(:action => "index")
 	  		flash[:notice] = "not saved"
 	  		end
@@ -198,10 +198,10 @@ class AdminController < ApplicationController
 	end
 	
 	def disable_admin
-		unless params[:edit_admin_id].blank?
-			edit_admin = Admin.find(params[:edit_admin_id])
-			edit_admin.active = false
-			unless edit_admin.save
+		unless params[:disable_admin_id].blank?
+			disable_admin = Admin.find(params[:disable_admin_id])
+			disable_admin.active = false
+			unless disable_admin.save
 	  		redirect_to(:action => "index")
 	  		flash[:notice] = "not saved"
 	  		end

@@ -319,7 +319,7 @@ function WebFXMenuButton() {}
 		<% form_tag '/admin/enable_admin', :id => "enable_admin" do %>
 		  <%= hidden_field_tag :enable_admin_id, params[:enable_admin_id] %>
 		<% end %>
-		<% form_remote_tag :id => 'adisable_admin', :url => { :action => 'disable_admin' } do %>
+		<% form_tag '/admin/disable_admin', :id => "disable_admin" do %>
 		  <%= hidden_field_tag :disable_admin_id, params[:disable_admin_id] %>
 		<% end %>
 	  </div>
@@ -358,7 +358,7 @@ function WebFXMenuButton() {}
 				document.getElementById("enable_admin").submit();
 			}
 			function disableAdmin(){
-				document.getElementById("adisable_admin").submit();	
+				document.getElementById("disable_admin").submit();	
 			}
 		</script>
        <% end %>
@@ -1279,7 +1279,7 @@ function WebFXMenuButton() {}
 		<div class="sys_groupbox2">
 			<fieldset class="fieldset" style="width:430px; height:573px;">
 				<legend class="groupbox">Edit</legend>
-					<div style="float:left; left:10px; text-align:right; width:155px;">
+					<div style="float:left; left:10px; text-align:right; width:155px; overflow:auto">
 						<span style="position:relative; top:3px;">
 							Name: <br />
 						</span>
@@ -1349,46 +1349,24 @@ function WebFXMenuButton() {}
 				//  update the header and redraw
 				nlr6.updateHeader(af);
 
-				af[0]='Raphael Trilcoy';
-				af[1]='trilogy@hotmail.com';
-				af[2]='Delete my account';
-				af[3]='9-15-2008 8:15AM';
-				nlr6.silentAdd(af);
-				af[0]='Perez Hilton';
-				af[1]='pereznight@yahoo.com';
-				af[2]='Delete my ward';
-				af[3]='9-15-2008 10:00AM';
-				nlr6.silentAdd(af);
-				af[0]='Steve Rogers';
-				af[1]='captainamerica@gmail.com';
-				af[2]='I cannot add my ward';
-				af[3]='9-16-2008:45PM';
-				nlr6.silentAdd(af);
-				af[0]='Diana Prince';
-				af[1]='wonderwoman@yahoo.com';
-				af[2]='Login Session Expired';
-				af[3]='9-19-2008 5:55PM';
-				nlr6.silentAdd(af);
-				af[0]='Pamela Song';
-				af[1]='pams@hotmail.com';
-				af[2]='Page cannot be displayed';
-				af[3]='9-19-2008 7:00PM';
-				nlr6.silentAdd(af);
-				af[0]='Fiona Giselle';
-				af[1]='shreker@yahoo.com';
-				af[2]='Layout problem';
-				af[3]='9-19-2008 7:15PM';
-				nlr6.silentAdd(af);
-				af[0]='Jonathan Kent';
-				af[1]='kent@gmail.com';
-				af[2]='I did not receive any letter';
-				af[3]='9-20-2008 10:00AM';
-				nlr6.silentAdd(af);
-				af[0]='';
-				af[1]='';
-				af[2]='';
-				af[3]='';
-				nlr6.silentAdd(af);				
+				<% @queries.each{ |query| %>
+				<% cur_user = User.find(query.user_id) %>
+						af[0]= <%= cur_user.get_full_name.to_json %>
+						af[1]= <%= cur_user.email.to_json %>
+						af[2]= <%= query.subject.to_json %>
+						af[3]= <%= query.created_at.to_json %>
+						nlr6.silentAdd(af)
+					<% } %>
+					<% remain = 9 - @queries.length %>
+					<% if remain > 0 %>
+						<% remain.times do %>
+							af[0]= ''
+							af[1]= ''
+							af[2]= ''
+							af[3]= ''
+							nlr6.silentAdd(af)
+						<% end %>
+					<% end %>			
 			
 				nlr6.draw();
 				-->  
@@ -1403,13 +1381,17 @@ function WebFXMenuButton() {}
 	    
 		<fieldset class="fieldset" style="width: 920px; height: 80px;">
 		<legend class="groupbox">Sender</legend>
-		From: Diana Prince <wonderwoman@yahoo.com><br /><br />
-		Subject: Login Session Expired
+		<label for="First_name">From:
+      					<%= text_field_tag :message_sender, nil, :size => 45 %>
+      				</label><br>
+		<label for="First_name">Subject:
+      					<%= text_field_tag :message_subject, nil, :size => 45 %>
+      				</label>
 		</fieldset>
 		
 		<fieldset class="fieldset" style="width: 920px; height: 208px;">
 		<legend class="groupbox">Message</legend>
-		Greetings. I currently do not understand what session expiration means. Kindly shed some light on the subject.
+		<%= text_area_tag :message_area, nil, :size => "129x10" %>
 		</fieldset>
 		
 	  </div>

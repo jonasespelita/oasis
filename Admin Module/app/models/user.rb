@@ -23,6 +23,10 @@ class User < ActiveRecord::Base
     u = find_by_login(login) # need to get the salt
     u && u.authenticated?(password) ? u : nil
   end
+  
+  def get_full_name
+  	"#{self.first_name} #{self.middle_name} #{self.last_name}"
+  end
 
   # Encrypts some data with the salt.
   def self.encrypt(password, salt)

@@ -5,6 +5,8 @@ class AdminController < ApplicationController
 		@campus_activities = CampusActivities.find(:all)
 		@announcements = Announcements.find(:all)
 		@admins = Admin.find(:all)
+		@queries = Query.find(:all)
+		@users = User.find(:all)
 		admin = Admin.find(session[:admin_id])
 		if admin.position == 'oa'
 					@is_oa = true
@@ -182,10 +184,10 @@ class AdminController < ApplicationController
 	end
 	
 	def enable_admin
-		unless params[:edit_admin_id].blank?
-			edit_admin = Admin.find(params[:edit_admin_id])
-			edit_admin.active = true
-			unless edit_admin.save
+		unless params[:enable_admin_id].blank?
+			enable_admin = Admin.find(params[:enable_admin_id])
+			enable_admin.active = true
+			unless enable_admin.save
 	  		redirect_to(:action => "index")
 	  		flash[:notice] = "not saved"
 	  		end
@@ -198,10 +200,10 @@ class AdminController < ApplicationController
 	end
 	
 	def disable_admin
-		unless params[:edit_admin_id].blank?
-			edit_admin = Admin.find(params[:edit_admin_id])
-			edit_admin.active = false
-			unless edit_admin.save
+		unless params[:disable_admin_id].blank?
+			disable_admin = Admin.find(params[:disable_admin_id])
+			disable_admin.active = false
+			unless disable_admin.save
 	  		redirect_to(:action => "index")
 	  		flash[:notice] = "not saved"
 	  		end
@@ -213,6 +215,22 @@ class AdminController < ApplicationController
 		
 	end
 	
+	def delete_query
+		deleted_query = Query.find(params[:delete_user_query_id])
+		unless deleted_query.destroy
+	  		redirect_to(:action => "index")
+	  		flash[:notice] = "not deleted"
+	  	end
+		redirect_to(:action => "index")
+	end
+	
+	def resolve_query
+		resolved_query = Query.find(params[:resolve_user_query_id])
+		resolved_query.resolved = true
+		resolved_query.save
+		redirect_to(:action => "index")
+	end
+
 		
   
   protected

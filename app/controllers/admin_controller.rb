@@ -5,6 +5,8 @@ class AdminController < ApplicationController
 		@campus_activities = CampusActivities.find(:all)
 		@announcements = Announcements.find(:all)
 		@admins = Admin.find(:all)
+		@queries = Query.find(:all)
+		@users = User.find(:all)
 		admin = Admin.find(session[:admin_id])
 		if admin.position == 'oa'
 					@is_oa = true
@@ -213,6 +215,26 @@ class AdminController < ApplicationController
 		
 	end
 	
+	def delete_query
+		deleted_query = Query.find(params[:delete_user_query_id])
+		unless deleted_query.destroy
+	  		redirect_to(:action => "index")
+	  		flash[:notice] = "not deleted"
+	  	end
+		redirect_to(:action => "index")
+	end
+	
+	def resolve_query
+		resolved_query = Query.find(params[:resolve_user_query_id])
+		if resolved_query.resolved
+			resolved_query.resolved = false
+		else
+			resolved_query.resolved = true
+		end
+		resolved_query.save
+		redirect_to(:action => "index")
+	end
+
 		
   
   protected

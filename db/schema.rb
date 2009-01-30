@@ -10,10 +10,14 @@
 # It's strongly recommended to check this file into your version control system.
 
 <<<<<<< HEAD:db/schema.rb
+<<<<<<< HEAD:db/schema.rb
 ActiveRecord::Schema.define(:version => 20090127095036) do
 =======
 ActiveRecord::Schema.define(:version => 20090117101343) do
 >>>>>>> d23cadc789f204faec6630f118a857c796588582:Admin Module/db/schema.rb
+=======
+ActiveRecord::Schema.define(:version => 20090130044858) do
+>>>>>>> 6911bf8b40f1e6d685c7895ccdfbfe314719a244:Admin Module/db/schema.rb
 
   create_table "actions", :force => true do |t|
     t.text     "action",     :null => false
@@ -70,6 +74,15 @@ ActiveRecord::Schema.define(:version => 20090117101343) do
     t.datetime "updated_at"
   end
 
+  create_table "queries", :force => true do |t|
+    t.string   "subject",                       :null => false
+    t.text     "message"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "resolved",   :default => false
+  end
+
   create_table "students", :force => true do |t|
     t.string   "idno"
     t.string   "name"
@@ -88,6 +101,11 @@ ActiveRecord::Schema.define(:version => 20090117101343) do
     t.datetime "remember_token_expires_at"
     t.datetime "last_login"
     t.datetime "cur_login"
+    t.string   "last_name"
+    t.string   "first_name"
+    t.string   "middle_name"
+    t.integer  "number_of_wards",                         :default => 0
+    t.string   "status"
   end
 
   create_table "violations", :force => true do |t|

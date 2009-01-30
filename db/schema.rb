@@ -9,7 +9,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+<<<<<<< HEAD:db/schema.rb
 ActiveRecord::Schema.define(:version => 20090127095036) do
+=======
+ActiveRecord::Schema.define(:version => 20090117101343) do
+>>>>>>> d23cadc789f204faec6630f118a857c796588582:Admin Module/db/schema.rb
 
   create_table "actions", :force => true do |t|
     t.text     "action",     :null => false

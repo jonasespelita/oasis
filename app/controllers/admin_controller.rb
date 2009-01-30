@@ -37,7 +37,7 @@ class AdminController < ApplicationController
   			flash.now[:notice] = "Invalid user/password combination"
   		end
   	end
-  
+
   end
   
   

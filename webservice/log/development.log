@@ -24266,6 +24266,7 @@ Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-14 23:51:21)
 Completed in 15ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061068.xml]
 
 
+<<<<<<< HEAD:webservice/log/development.log
 Processing ProfilesController#show (for 127.0.0.1 at 2009-01-29 11:43:42) [GET]
   Parameters: {"id"=>"2061009"}
 
@@ -24335,3 +24336,1050 @@ PGError (fe_sendauth: no password supplied
 Rendered /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/_trace (102.5ms)
 Rendered /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/_request_and_response (0.9ms)
 Rendering /usr/lib/ruby/gems/1.8/gems/actionpack-2.2.2/lib/action_controller/templates/rescues/layout.erb (internal_server_error)
+=======
+Processing ProfilesController#show (for 127.0.0.1 at 2009-01-19 22:42:08) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (47.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (109.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 1110ms (View: 0, DB: 156) | 200 OK [http://localhost/profiles/2061009]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-19 22:58:40) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (16.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 47ms (View: 0, DB: 16) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-19 23:13:32) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (16.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (47.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 6562ms (View: 0, DB: 63) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-19 23:13:57) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (15.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 63ms (View: 0, DB: 15) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-19 23:14:04) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 63ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-19 23:14:54) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (31.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 156ms (View: 0, DB: 31) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-19 23:15:20) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (31.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (47.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 125ms (View: 0, DB: 78) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-19 23:15:30) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 78ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+  [4;36;1mSQL (16.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-23 22:28:19) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (109.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 687ms (View: 0, DB: 109) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-23 22:28:28) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 31ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-23 22:28:29) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 125ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-23 22:39:40) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (15.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 109ms (View: 0, DB: 15) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-23 22:39:50) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (16.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 32ms (View: 0, DB: 16) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-23 22:56:51) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (15.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 141ms (View: 0, DB: 15) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-28 23:14:19) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (47.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 484ms (View: 0, DB: 47) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-28 23:14:20) [GET]
+  Parameters: {"id"=>"2061068"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061068) LIMIT 1[0m
+Completed in 32ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061068.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-28 23:14:48) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 109ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-28 23:14:48) [GET]
+  Parameters: {"id"=>"2061068"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (16.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061068) LIMIT 1[0m
+Completed in 31ms (View: 0, DB: 16) | 200 OK [http://localhost/profiles/2061068.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-28 23:21:29) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 16ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-28 23:21:31) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 31ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-28 23:26:28) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 16ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-28 23:26:28) [GET]
+  Parameters: {"id"=>"2061068"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061068) LIMIT 1[0m
+Completed in 31ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061068.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-28 23:32:06) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 16ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-28 23:32:06) [GET]
+  Parameters: {"id"=>"2061068"}
+  [4;36;1mSQL (15.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061068) LIMIT 1[0m
+Completed in 16ms (View: 0, DB: 15) | 200 OK [http://localhost/profiles/2061068.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-28 23:55:53) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 62ms (View: 0, DB: 16) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-28 23:55:53) [GET]
+  Parameters: {"id"=>"2061068"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061068) LIMIT 1[0m
+Completed in 31ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061068.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-28 23:56:12) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 32ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-28 23:56:12) [GET]
+  Parameters: {"id"=>"2061068"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061068) LIMIT 1[0m
+Completed in 32ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061068.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-28 23:56:20) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 32ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-28 23:56:20) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 32ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-28 23:56:20) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 31ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-28 23:56:21) [GET]
+  Parameters: {"id"=>"2061068"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (16.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061068) LIMIT 1[0m
+Completed in 31ms (View: 0, DB: 16) | 200 OK [http://localhost/profiles/2061068.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 00:09:49) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (16.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 31ms (View: 0, DB: 16) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 00:09:49) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (16.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 31ms (View: 0, DB: 16) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 00:09:49) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (16.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 78ms (View: 0, DB: 16) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 00:09:49) [GET]
+  Parameters: {"id"=>"2061068"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (15.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061068) LIMIT 1[0m
+Completed in 31ms (View: 0, DB: 15) | 200 OK [http://localhost/profiles/2061068.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 00:17:33) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 16ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 00:17:33) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 16ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 00:17:33) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 31ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 00:17:33) [GET]
+  Parameters: {"id"=>"2061068"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061068) LIMIT 1[0m
+Completed in 31ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061068.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 00:19:39) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 15ms (View: 0, DB: 16) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 00:19:40) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 31ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 00:19:40) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (15.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 16ms (View: 0, DB: 15) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 00:19:40) [GET]
+  Parameters: {"id"=>"2061068"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (16.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061068) LIMIT 1[0m
+Completed in 78ms (View: 0, DB: 16) | 200 OK [http://localhost/profiles/2061068.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 00:19:57) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 31ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 00:19:58) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 31ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 00:19:58) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 31ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 00:19:58) [GET]
+  Parameters: {"id"=>"2061068"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061068) LIMIT 1[0m
+Completed in 31ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061068.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 00:20:28) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (15.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 31ms (View: 0, DB: 15) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 00:20:29) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 31ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 00:20:29) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 16ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 00:20:29) [GET]
+  Parameters: {"id"=>"2061068"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061068) LIMIT 1[0m
+Completed in 32ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061068.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 00:20:30) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 16ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 00:20:30) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (16.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 172ms (View: 0, DB: 16) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 00:20:30) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 16ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 00:20:30) [GET]
+  Parameters: {"id"=>"2061068"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061068) LIMIT 1[0m
+Completed in 16ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061068.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 00:20:31) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 31ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 00:20:31) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 15ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 00:20:31) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 15ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 00:20:31) [GET]
+  Parameters: {"id"=>"2061068"}
+  [4;36;1mSQL (15.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061068) LIMIT 1[0m
+Completed in 31ms (View: 0, DB: 15) | 200 OK [http://localhost/profiles/2061068.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 00:20:32) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 31ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 00:20:32) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (16.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 31ms (View: 0, DB: 16) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 00:20:32) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (15.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (16.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 156ms (View: 94, DB: 31) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 00:20:32) [GET]
+  Parameters: {"id"=>"2061068"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061068) LIMIT 1[0m
+Completed in 16ms (View: 0, DB: 16) | 200 OK [http://localhost/profiles/2061068.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 00:20:33) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 15ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 00:20:33) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 15ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 00:20:33) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 31ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 00:20:34) [GET]
+  Parameters: {"id"=>"2061068"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (15.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061068) LIMIT 1[0m
+Completed in 31ms (View: 0, DB: 15) | 200 OK [http://localhost/profiles/2061068.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 00:20:34) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 16ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 00:20:34) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 32ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 00:20:35) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (16.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 31ms (View: 0, DB: 16) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 00:20:35) [GET]
+  Parameters: {"id"=>"2061068"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (31.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061068) LIMIT 1[0m
+Completed in 109ms (View: 0, DB: 31) | 200 OK [http://localhost/profiles/2061068.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 01:28:04) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 187ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 01:28:04) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 15ms (View: 0, DB: 16) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 01:28:04) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 31ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 01:28:04) [GET]
+  Parameters: {"id"=>"2061068"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061068) LIMIT 1[0m
+Completed in 31ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061068.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 01:54:17) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 31ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 01:54:17) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 31ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 01:54:18) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 31ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 01:54:18) [GET]
+  Parameters: {"id"=>"2061068"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (16.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061068) LIMIT 1[0m
+Completed in 31ms (View: 0, DB: 16) | 200 OK [http://localhost/profiles/2061068.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 01:55:53) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (16.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 16ms (View: 0, DB: 16) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 01:55:53) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 31ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 01:55:53) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (15.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 47ms (View: 0, DB: 15) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 01:55:53) [GET]
+  Parameters: {"id"=>"2061068"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (16.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061068) LIMIT 1[0m
+Completed in 94ms (View: 0, DB: 16) | 200 OK [http://localhost/profiles/2061068.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 01:56:04) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 125ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 01:56:04) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (16.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 31ms (View: 0, DB: 16) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 01:56:04) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 15ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 01:56:04) [GET]
+  Parameters: {"id"=>"2061068"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061068) LIMIT 1[0m
+Completed in 15ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061068.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 01:56:21) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (16.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 15ms (View: 0, DB: 16) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 01:56:21) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 15ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 01:56:21) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 15ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 01:56:21) [GET]
+  Parameters: {"id"=>"2061068"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061068) LIMIT 1[0m
+Completed in 15ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061068.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 02:02:09) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 47ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 02:02:09) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 78ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 02:02:10) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 31ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 02:02:10) [GET]
+  Parameters: {"id"=>"2061068"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061068) LIMIT 1[0m
+Completed in 31ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061068.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 02:02:33) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (16.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 31ms (View: 0, DB: 16) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 02:02:33) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 16ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 02:02:33) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 16ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 02:02:33) [GET]
+  Parameters: {"id"=>"2061068"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061068) LIMIT 1[0m
+Completed in 16ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061068.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 02:02:49) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 16ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 02:02:49) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 16ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 02:02:50) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (16.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 78ms (View: 0, DB: 16) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 02:02:50) [GET]
+  Parameters: {"id"=>"2061068"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (16.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061068) LIMIT 1[0m
+Completed in 31ms (View: 0, DB: 16) | 200 OK [http://localhost/profiles/2061068.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 02:14:27) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 31ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 02:14:27) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 16ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 02:14:27) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 16ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 02:14:27) [GET]
+  Parameters: {"id"=>"2061068"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061068) LIMIT 1[0m
+Completed in 16ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061068.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 02:15:16) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (16.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 31ms (View: 0, DB: 16) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 02:15:16) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 15ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 02:15:16) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 31ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 02:15:16) [GET]
+  Parameters: {"id"=>"2061068"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (15.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061068) LIMIT 1[0m
+Completed in 125ms (View: 0, DB: 15) | 200 OK [http://localhost/profiles/2061068.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 02:16:00) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (15.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 31ms (View: 0, DB: 15) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 02:16:00) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 15ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 02:16:00) [GET]
+  Parameters: {"id"=>"2061009"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061009) LIMIT 1[0m
+Completed in 15ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061009.xml]
+
+
+Processing ProfilesController#show to xml (for 127.0.0.1 at 2009-01-29 02:16:00) [GET]
+  Parameters: {"id"=>"2061068"}
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_min_messages TO 'panic'[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mSET client_min_messages TO 'notice'[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mSET client_encoding TO 'unicode'[0m
+  [4;35;1mProfile Load (0.0ms)[0m   [0mSELECT * FROM "profiles" WHERE ("profiles"."idNo" = 2061068) LIMIT 1[0m
+Completed in 15ms (View: 0, DB: 0) | 200 OK [http://localhost/profiles/2061068.xml]
+>>>>>>> d23cadc789f204faec6630f118a857c796588582:WebService Module/log/development.log

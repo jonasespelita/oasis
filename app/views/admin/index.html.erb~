@@ -5,7 +5,7 @@
 <head>
 <title>OASIS Administrator</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
+<%= javascript_include_tag 'prototype' %>
 <!-- webfxlayout.js -->
 <script type="text/javascript">
 
@@ -149,7 +149,7 @@ function WebFXMenuButton() {}
 							<% else %>
 								aa[3]= <%= admin.last_visit.to_json %>
 							<% end %> 
-							aa[4]= <%= admin.active.to_json %>
+							aa[4]= <%= if admin.active then ('Active').to_json else ('Inactive').to_json end %>
 							aa[5]= <%= admin.first_name.to_json %>
 							aa[6]= <%= admin.last_name.to_json %>
 							aa[7]= <%= admin.email.to_json %>
@@ -177,15 +177,19 @@ function WebFXMenuButton() {}
 			</script>
 			</div>
 			<div style="position:relative;top:16px; float:right;left:-20px ">				
-				<input type="button" name="btn" value="Edit"onclick="clickEditAdmin()">
-				<%= button_to_function "Enable", "enableAdmin()" %>	 
-				<%= button_to_function "Disable", "disableAdmin()" %>	 
+				<%= button_to_function "Add", "addAdmin()" %>
+				<%= button_to_function "Activate", "enableAdmin()" %>	 
+				<%= button_to_function "Deactivate", "disableAdmin()" %>	 
 			</div>
 	    </fieldset>
 		<br /><br />
-		<fieldset class="fieldset" style="width:920px; height:150px;">
+		<% if flash[:notice] == "Edit admin passwords do not match" %>
+		<fieldset id= "editAdmin" class="fieldset" style="width:920px; height:150px;">
+		<% else %>
+		<fieldset id= "editAdmin" class="fieldset" style="width:920px; height:150px;">
+		<% end %>
 			<legend class="groupbox">Edit</legend>
-				<% form_remote_tag :id => 'edit_admin', :url => { :action => 'edit_admin' } do %>
+				<% form_tag '/admin/edit_admin', :id => "edit_admin" do %>
 				<div style="position:relative; float:left;">
 					<span style="position:relative; top:0px;">
 						<label for="First_name">First name:
@@ -213,21 +217,39 @@ function WebFXMenuButton() {}
       				<br>
       				</br>
 					</span>
+					<span style="position:relative; top:18px;">
+						<label for="Username">Username:
+							<span style="position:relative;left:3px;">
+      					<%= text_field_tag :edit_admin_username, params[:edit_admin_username], :size => 45 %>
+      					</span>
+      				</label>
+      				<br>
+      				</br>
+      			</span>
 				</div>
 				<div style="position:absolute; left:480px;">
+					
 					<span style="position:relative; top:0px;">
-						<label for="Username">Username:
-							<span style="position:relative;">
-      					<%= text_field_tag :edit_admin_username, params[:edit_admin_username], :size => 45 %>
+						<% if flash[:notice] == "Edit admin passwords do not match" %>
+						<label for="Password" style="color:red">Password:
+						<% else %>
+						<label for="Password">Password:
+						<% end %>
+							<span style="position:relative; left:2px">
+      					<%= password_field_tag :edit_admin_password, params[:edit_admin_password], :size => 45 %>
       					</span>
       				</label>
       				<br>
       				</br>
 					</span>
 					<span style="position:relative; top:6px;">
-						<label for="Password">Password:
-							<span style="position:relative; left:2px">
-      					<%= text_field_tag :edit_admin_password, params[:edit_admin_password], :size => 45 %>
+						<% if flash[:notice] == "Edit admin passwords do not match" %>
+						<label for="Confirm" style="color:red">Confirm:
+						<% else %>
+						<label for="Confirm">Confirm:
+						<% end %>
+							<span style="position:relative; left:15px">
+      					<%= password_field_tag :edit_admin_confirm, params[:edit_admin_confirm], :size => 45 %>
       					</span>
       				</label>
       				<br>
@@ -245,14 +267,18 @@ function WebFXMenuButton() {}
 				</div>				 
 			<div style="position:relative; float:right; top:100px; left:-5px">
 				<%= submit_tag "Save" %>
-				<%= button_to_function "Clear", "clearAdminEdit()" %>	  
+				<%= button_to_function "Cancel", "cancelAdminEdit()" %>	  
 			</div>
 			<% end %>
 	    </fieldset>		
 		<br /><br />
-		<fieldset class="fieldset" style="width: 920px; height:150px;">
+		<% if flash[:notice] == "Add admin passwords do not match" %>
+		<fieldset id= "addAdmin" class="fieldset" style="width: 920px; height:150px;">
+		<% else %>
+		<fieldset id= "addAdmin" class="fieldset" style="width: 920px; height:150px;display:none">
+		<% end %>
 			<legend class="groupbox">Add New</legend>
-		  		<% form_remote_tag :id => 'add_admin', :url => { :action => 'add_admin' } do %>
+		  		<% form_tag '/admin/add_admin', :id => "add_admin" do %>
 				<div style="position:relative; float:left;">
 					<span style="position:relative; top:0px;">
 						<label for="First_name">First name:
@@ -279,22 +305,41 @@ function WebFXMenuButton() {}
       				<br>
       				</br>
 					</span>
-				</div>
-			
-				<div style="position:absolute; left:480px;">
-					<span style="position:relative; top:0px;">
+					<span style="position:relative; top:18px;">
 						<label for="Username">Username:
-							<span style="position:relative;">
+							<span style="position:relative;left:3px">
       					<%= text_field_tag :add_admin_username, params[:add_admin_username], :size => 45 %>
       					</span>
       				</label>
       				<br>
       				</br>
 					</span>
-					<span style="position:relative; top:6px;">
-						<label for="Password">Password:
+				</div>
+			
+				<div style="position:absolute; left:480px;">
+					
+					<span style="position:relative; top:0px;">
+					<% if flash[:notice] == "Add admin passwords do not match" %>
+					<label for="Password" style="color:red">Password:
+					<% else %>
+					<label for="Password">Password:
+					<% end %>
 							<span style="position:relative; left:2px">
-      					<%= text_field_tag :add_admin_password, params[:add_admin_password], :size => 45 %>
+      					<%= password_field_tag :add_admin_password, params[:add_admin_password], :size => 45 %>
+      					</span>
+      				</label>
+      				<br>
+      				</br>
+					</span>
+					<span style="position:relative; top:6px;">
+						<% if flash[:notice] == "Add admin passwords do not match" %>
+						<label for="Confirm" style="color:red">Confirm:
+						<% else %>
+						<label for="Confirm">Confirm:
+						<% end %>
+							<span style="position:relative; left:15px;">
+						
+      					<%= password_field_tag :add_admin_confirm, params[:add_admin_confirm], :size => 45 %>
       					</span>
       				</label>
       				<br>
@@ -312,7 +357,7 @@ function WebFXMenuButton() {}
 				</div>				 
 			<div style="position:relative; float:right; top:100px; left:-5px;">
 				<%= submit_tag "Save" %>
-				<%= button_to_function "Clear", "clearAdminAdd()" %>	  	  
+				<%= button_to_function "Cancel", "cancelAdminAdd()" %>	  	  
 			</div>
 			<% end %>
 	    </fieldset>
@@ -321,6 +366,9 @@ function WebFXMenuButton() {}
 		<% end %>
 		<% form_tag '/admin/disable_admin', :id => "disable_admin" do %>
 		  <%= hidden_field_tag :disable_admin_id, params[:disable_admin_id] %>
+		<% end %>
+		<% form_tag :id => "admin_selected" do %>
+		  <%= hidden_field_tag :var_selected %>
 		<% end %>
 	  </div>
 	 
@@ -332,27 +380,36 @@ function WebFXMenuButton() {}
 				document.getElementById("edit_admin_position").value = nlr1.elements[i][2];
 				document.getElementById("edit_admin_username").value = nlr1.elements[i][1];
 				document.getElementById("edit_admin_password").value = ""
+				document.getElementById("edit_admin_confirm").value = ""
 				document.getElementById("edit_admin_email").value = nlr1.elements[i][7];
 				document.getElementById("edit_admin_id").value = nlr1.elements[i][8];		
 				document.getElementById("disable_admin_id").value = nlr1.elements[i][8];	
 				document.getElementById("enable_admin_id").value = nlr1.elements[i][8];	
+				Element.show('editAdmin');
 				
 			}
-			function clearAdminAdd() {
+			<% if flash[:notice] == "Edit admin passwords do not match" %>
+			clickEditAdmin()
+			<% end %>
+			function cancelAdminAdd() {
 				document.getElementById("add_admin_first_name").value = ""
 				document.getElementById("add_admin_last_name").value = ""
 				document.getElementById("add_admin_position").value = ""
 				document.getElementById("add_admin_username").value = ""		
 				document.getElementById("add_admin_password").value = ""
-				document.getElementById("add_admin_email").value = ""	
+				document.getElementById("add_admin_confirm").value = ""
+				document.getElementById("add_admin_email").value = ""
+				Element.hide('addAdmin');
 			}
-			function clearAdminEdit() {
+			function cancelAdminEdit() {
 				document.getElementById("edit_admin_first_name").value = ""
 				document.getElementById("edit_admin_last_name").value = ""
 				document.getElementById("edit_admin_position").value = ""
 				document.getElementById("edit_admin_username").value = ""		
 				document.getElementById("edit_admin_password").value = ""
-				document.getElementById("edit_admin_email").value = ""		
+				document.getElementById("edit_admin_confirm").value = ""
+				document.getElementById("edit_admin_email").value = ""
+				Element.hide('editAdmin');		
 			}
 			function enableAdmin(){
 				document.getElementById("enable_admin").submit();
@@ -360,6 +417,10 @@ function WebFXMenuButton() {}
 			function disableAdmin(){
 				document.getElementById("disable_admin").submit();	
 			}
+			function addAdmin(){
+				Element.show('addAdmin');
+			}
+			
 		</script>
        <% end %>
 	  <div class="tab-page" id="tabPage2">
@@ -404,7 +465,7 @@ function WebFXMenuButton() {}
 						ab[1]='471';
 						ab[2]='409';
 						nlr2.silentAdd(ab);
-						<span style="position:relative; float:right; left:230px;">
+						
 						ab[0]='September 15, 2008'
 						ab[1]='381';
 						ab[2]='287';
@@ -542,7 +603,7 @@ function WebFXMenuButton() {}
 
 						
 						nlr2.draw();
-						-->
+						-->  
 					  </script>
 					 </div>
 					 <br />
@@ -796,169 +857,6 @@ function WebFXMenuButton() {}
 		</fieldset>
 	    
 	  </div>	  
-	  	 	   
-
-	  	 	   
-	  <div class="tab-page" id="tabPage2">
-	    <h2 class="tab">Campus Activities</h2>
-	    
-	    <script type="text/javascript">tp1.addTabPage( document.getElementById( "tabPage2" ) );</script>
-	    
-		<div class="sys_groupbox1" >
-			<fieldset class="fieldset" style="width: 400px; height:574px;">
-				<legend class="groupbox">Activities</legend>
-				<div style="position:relative; overflow:auto; height:520px; top:4px;" onclick="clickEditAct()">
-				<script language="text/javascript" type="text/javascript">
-					<!--
-					//  let's create our list object
-					var nlr9=new mylist('nlr9','dvia9',2,120,260);
-					//  set it's width and height  
-					nlr9.setDims(300,100);
-					//  create array for item addition - you can use the same array for the header and items
-					var ai=new Array(4);
-					//  fill the array with contents (now for the header)
-					ai[0]='Date/Time';
-					ai[1]='Activity';
-
-					//  update the header and redraw
-					nlr9.updateHeader(ai);
-					<% @campus_activities.each{ |activity| %>
-						ai[0]= <%= activity.date.to_json %>
-						ai[1]= <%= activity.activity.to_json %>
-						ai[2]= <%= activity.summary.to_json %>
-						ai[3]= <%= activity.id.to_json %>
-						nlr9.silentAdd(ai)
-					<% } %>
-					<% remain = 25 - @campus_activities.length %>
-					<% if remain > 0 %>
-						<% remain.times do %>
-							ai[0]= ''
-							ai[1]= ''
-							ai[2]= ''
-							ai[3]= ''
-							nlr9.silentAdd(ai)
-						<% end %>
-					<% end %>
-					 
-
-					nlr9.draw();
-					-->  
-				</script>
-				</div>				
-				
-				<input type="button" name="btn" value="Delete" style="position:relative;float:right; top:13px;" onclick="clickDeleteAct()">
-				<input type="button" name="btn" value="Edit" style="position:relative;float:right; top:13px; left:-5px;" onclick="clickEditAct()">
-		    </fieldset>
-		</div>
-		<div class="sys_groupbox2">
-			<fieldset class="fieldset" style="width:420px; height:273px;">
-				<legend class="groupbox">Edit Acitivity</legend>
-					<div style="float:left; right:-10px; text-align:right; width:110px;">
-						<span style="position:relative; top:3px;">
-							Activity Name: <br />
-						</span>
-						<span style="position:relative; top:17px;">
-							Date/Time: <br />
-						</span>
-						<span style="position:relative; top:31px;">
-							Summary: <br />
-						</span>
-					</div>
-					<div style="position:relative; float:left; width: 80px;">
-					
-						<% form_remote_tag :id => 'edit_activity', :url => { :action => 'edit_activity' } do %>
-
-								<div>
-									<span style="position:relative; top:2px;">
-										<%= text_field_tag :edit_activity_name, params[:edit_activity_name], :size => 30 %>
-									</span>
-									<span style="position:relative; top:10px;">
-										<%= text_field_tag :edit_activity_date, params[:edit_activity_date], :size => 30 %>
-									</span>
-									<span style="position:relative; top:20px;">
-										<%= text_area_tag  :edit_activity_summary, params[:edit_activity_summary], :size => "40x9" %>
-										<%= hidden_field_tag :edit_activity_id, params[:edit_activity_id] %>
-									</span>
-									<span style="position:relative; top:25px; float:right; left:172px;">
-										<%= submit_tag "Save" %>
-									</span>
-									<span style="position:relative; float:right; left:230px;">
-										<%= button_to_function "Clear", "clearActEdit()" %>
-									</span>
-								</div>
-						<% end %>
-					</div>			
-		    </fieldset>
-			<br />
-			<fieldset class="fieldset" style="width:420px; height:273px;">
-				<legend class="groupbox">Add New Acitivity</legend>
-					<div style="float:left; left:10px; text-align:right; width:110px;">
-						<span style="position:relative; top:3px;">
-							Activity Name: <br />
-						</span>
-						<span style="position:relative; top:17px;">
-							Date/Time: <br />
-						</span>
-						<span style="position:relative; top:31px;">
-							Summary: <br />
-						</span>
-					</div>
-					<div style="position:relative; float:left; width: 80px;">
-						<% form_remote_tag :id => 'add_activity', :url => { :action => 'add_activity' } do %>
-
-								<div>
-									<span style="position:relative; top:2px;">
-										<%= text_field_tag :add_activity_name, params[:add_activity_name], :size => 30 %>
-									</span>
-									<span style="position:relative; top:10px;">
-										<%= text_field_tag :add_activity_date, params[:add_activity_date], :size => 30 %>
-									</span>
-									<span style="position:relative; top:20px;">
-										<%= text_area_tag :add_activity_summary, params[:add_activity_summary], :size => "40x9" %>
-									</span>
-									<span style="position:relative; top:25px; float:right; left:172px;">
-										<%= submit_tag "Save" %>
-									</span>
-									<span style="position:relative; float:right; left:230px;">
-										<%= button_to_function "Clear", "clearActAdd()" %>
-									</span>
-								</div>
-						<% end %>
-						<% form_tag '/admin/delete_activity', :id => "delete_act" do %>
-							<%= hidden_field_tag :delete_activity_id, params[:delete_activity_id] %>
-						<% end %>
-					</div>
-		    </fieldset>
-		</div>
-	  </div>
-	  <script language="text/javascript" type="text/javascript">
-			function clickEditAct() {
-				var i = nlr9.selected;
-				document.getElementById("edit_activity_date").value = nlr9.elements[i][0];
-				document.getElementById("edit_activity_name").value = nlr9.elements[i][1];
-				document.getElementById("edit_activity_summary").value = nlr9.elements[i][2];
-				document.getElementById("edit_activity_id").value = nlr9.elements[i][3];		
-				
-			}
-			function clearActAdd() {
-				document.getElementById("add_activity_date").value = ""
-				document.getElementById("add_activity_name").value = ""
-				document.getElementById("add_activity_summary").value = ""
-				document.getElementById("add_activity_id").value = ""		
-			}
-			function clearActEdit() {
-				document.getElementById("edit_activity_date").value = ""
-				document.getElementById("edit_activity_name").value = ""
-				document.getElementById("edit_activity_summary").value = ""
-				document.getElementById("edit_activity_id").value = ""		
-			}
-			function clickDeleteAct(){
-				var i = nlr9.selected;
-				document.getElementById("delete_activity_id").value = nlr9.elements[i][3];
-				document.getElementById("delete_act").submit();	
-			}
-		</script>
-
 	  
 	  <div class="tab-page" id="tabPage3">
 	    <h2 class="tab">Announcements</h2>
@@ -1007,11 +905,11 @@ function WebFXMenuButton() {}
 				</script>				
 				</div>				
 				<input type="button" name="btn" value="Delete" style="position:relative;float:right; top:13px;" onclick="clickDeleteAnn()">
-				<input type="button" name="btn" value="Edit" style="position:relative;float:right; top:13px; left:-5px;" onclick="clickEditAnn()">						
+				<input type="button" name="btn" value="Add" style="position:relative;float:right; top:13px; left:-5px;" onclick="clickAddAnn()">						
 		    </fieldset>
 		</div>
 		<div class="sys_groupbox2">
-			<fieldset class="fieldset" style="width:420px; height:273px;">
+			<fieldset id= "editAnnouncement" class="fieldset" style="width:420px; height:273px;display:none;">
 				<legend class="groupbox">Edit Announcement</legend>
 					<div style="float:left; left:10px; text-align:right; width:130px;">
 						<span style="position:relative; left:-20px; top:3px;">
@@ -1025,7 +923,7 @@ function WebFXMenuButton() {}
 						</span>
 					</div>
 					<div style="position:relative; float:left;left:-20px; width: 80px;">
-				<% form_remote_tag :id => 'edit_announcement', :url => { :action => 'edit_announcement' } do %>
+				<% form_tag '/admin/edit_announcement', :id => "edit_announcement" do %>
 
 								<div>
 									<span style="position:relative; top:2px;">
@@ -1043,7 +941,7 @@ function WebFXMenuButton() {}
 										<%= submit_tag "Save" %>
 									</span>
 									<span style="position:relative; float:right; left:230px;">
-										<%= button_to_function "Clear", "clearAnnEdit()" %>
+										<%= button_to_function "Cancel", "cancelAnnEdit()" %>
 									</span>
 								</div>
 						<% end %>
@@ -1053,7 +951,7 @@ function WebFXMenuButton() {}
 					</div>					
 		    </fieldset>
 			<br />
-			<fieldset class="fieldset" style="width:420px; height:273px;">
+			<fieldset id= "addAnnouncement" class="fieldset" style="width:420px; height:273px;display:none;">
 				<legend class="groupbox">Add New Announcement</legend>
 					<div style="float:left; left:10px; text-align:right; width:130px;">
 						<span style="position:relative;left:-20px; top:3px;">
@@ -1084,7 +982,7 @@ function WebFXMenuButton() {}
 										<%= submit_tag "Save" %>
 									</span>
 									<span style="position:relative; float:right; left:230px;">
-										<%= button_to_function "Clear", "clearAnnAdd()" %>
+										<%= button_to_function "Cancel", "cancelAnnAdd()" %>
 									</span>
 								</div>
 						<% end %>
@@ -1100,23 +998,30 @@ function WebFXMenuButton() {}
 				document.getElementById("edit_announcement_name").value = nlr10.elements[j][1];
 				document.getElementById("edit_announcement_summary").value = nlr10.elements[j][2];
 				document.getElementById("edit_announcement_id").value = nlr10.elements[j][3];		
+				Element.show("editAnnouncement");
 			}
-			function clearAnnAdd() {
+			function cancelAnnAdd() {
+				Element.hide("addAnnouncement");
 				document.getElementById("add_announcement_date").value = ""
 				document.getElementById("add_announcement_name").value = ""
 				document.getElementById("add_announcement_summary").value = ""
 				document.getElementById("add_announcement_id").value = ""		
+				
 			}
-			function clearAnnEdit() {
+			function cancelAnnEdit() {
 				document.getElementById("edit_announcement_date").value = ""
 				document.getElementById("edit_announcement_name").value = ""
 				document.getElementById("edit_announcement_summary").value = ""
-				document.getElementById("edit_announcement_id").value = ""		
+				document.getElementById("edit_announcement_id").value = ""
+				Element.hide("editAnnouncement");		
 			}
 			function clickDeleteAnn(){
 				var j = nlr10.selected;
 				document.getElementById("delete_announcement_id").value = nlr10.elements[j][3];
 				document.getElementById("delete_ann").submit();	
+			}
+			function clickAddAnn(){
+				Element.show("addAnnouncement");
 			}
 				
 		</script>
@@ -1356,7 +1261,7 @@ function WebFXMenuButton() {}
 						af[1]= <%= cur_user.email.to_json %>
 						af[2]= <%= query.subject.to_json %>
 						af[3]= <%= query.created_at.to_json %>
-						af[4]= <%= query.resolved.to_json %>
+						af[4]= <%= if query.resolved then ('Yes').to_json else ('No').to_json end %>
 						af[5]= <%= query.message.to_json %>
 						af[6]= <%= query.id.to_json %>
 						nlr6.silentAdd(af)
@@ -1381,15 +1286,15 @@ function WebFXMenuButton() {}
 			</div>
 			<div style="position:absolute; top:263px; width:96%;">
 				<span style="position:relative; float:right">
-					<%= button_to_function 'Reply', "openEmail()" %> 
+					<%= button_to_function 'Resolve', "resolveQuery()" %> 
 					<%= button_to_function "Delete", "deleteUserQuery()" %>
-					<%= button_to_function 'Resolved', "resolveQuery()" %> 
+					
 				</span>
 			</div>
 		</fieldset>
 		
 	    
-		<fieldset class="fieldset" style="width: 920px; height: 80px;">
+		<fieldset id= "Sender" class="fieldset" style="width: 920px; height: 80px;display:none;">
 		<legend class="groupbox">Sender</legend>
 		<label for="First_name">From:
       					<%= text_field_tag :message_sender, nil, :size => 45 %>
@@ -1399,10 +1304,12 @@ function WebFXMenuButton() {}
       				</label>
 		</fieldset>
 		
-		<fieldset class="fieldset" style="width: 920px; height: 208px;">
+		<fieldset id= "MessageBox" class="fieldset" style="width: 920px; height: 208px;display:none;">
 		<legend class="groupbox">Message</legend>
 		<%= text_area_tag :message_area, nil, :size => "129x10" %>
-		
+		<span style="position:relative; float:right;">
+		<%= button_to_function 'Reply', "openEmail()" %> 
+		</span>
 		</fieldset>
 		<% form_tag '/admin/delete_query', :id => "delete_query" do %>
 							<%= hidden_field_tag :delete_user_query_id, params[:delete_user_query_id] %>
@@ -1418,15 +1325,21 @@ function WebFXMenuButton() {}
 				document.getElementById("message_subject").value = nlr6.elements[i][2];
 				document.getElementById("message_area").value = nlr6.elements[i][5];
 				document.getElementById("delete_user_query_id").value = nlr6.elements[i][6];	
-				
+				document.getElementById("resolve_user_query_id").value = nlr6.elements[i][6];
+				Element.show("Sender");
+				Element.show("MessageBox");
 					
 			}
 			function deleteUserQuery() {
 				document.getElementById("delete_query").submit();
+				Element.hide("Sender");
+				Element.hide("MessageBox");
 			}
 			function openEmail() {
 				var i = nlr6.selected;
 				window.location = "mailto:" + nlr6.elements[i][1];
+				Element.hide("Sender");
+				Element.hide("MessageBox");
 			}
 			function resolveQuery() {
 				document.getElementById("resolve_query").submit();

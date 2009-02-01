@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090113141150) do
+ActiveRecord::Schema.define(:version => 20090113071621) do
 
   create_table "attendances", :force => true do |t|
     t.integer  "idNo"
@@ -50,15 +50,6 @@ ActiveRecord::Schema.define(:version => 20090113141150) do
   end
 
   create_table "tests", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "tf_assessments", :force => true do |t|
-    t.string   "idno"
-    t.string   "gradingTerm"
-    t.integer  "payAmt"
-    t.date     "balanceAsOf"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -6,6 +6,7 @@ dark:  rgb(0,66,174);
 
 */
 
+
 .container {
 	background: 	transparent url(/images/bg.jpg) no-repeat;
 	width: 			977px;
@@ -192,3 +193,12 @@ dark:  rgb(0,66,174);
   margin-right: 0.1em;
   display: block;
 }
+
+#notice {
+  border: 2px solid red;
+  padding: 1em;
+  margin-bottom: 2em;
+  background-color: #f0f0f0;
+  font: bold smaller sans-serif;
+}
+

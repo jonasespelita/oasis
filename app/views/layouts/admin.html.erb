@@ -12,9 +12,9 @@
 </head>
 <!-- END:head -->
 <body>
-
-<p style="color: green"><%= flash[:notice] %></p>
-
+<% if flash[:notice] %>
+<p style="border: 2px solid red; padding: 1em; margin-bottom: 2em; background-color: #f0f0f0; font: bold sans;"><%= flash[:notice] %></p>
+<% end %>
 <%= yield  %>
 
 </body>

@@ -28,13 +28,15 @@ class AdminController < ApplicationController
   	session[:admin_id] = nil
   	if request.post?
   		admin = Admin.authenticate(params[:name], params[:password])
-  		if admin && admin.active == true
+  		if admin
+  			if admin.active == true
 			session[:admin_id] = admin.id
 			admin.last_visit = Time.now
 			admin.save
 			redirect_to(:action => "index")
-  		elsif admin.active == false
+  			else admin.active == false
   			flash.now[:notice] = "Your account has been disabled"
+  			end
   		else
   			flash.now[:notice] = "Invalid user/password combination"
   		end

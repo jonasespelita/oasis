@@ -226,7 +226,11 @@ class AdminController < ApplicationController
 	
 	def resolve_query
 		resolved_query = Query.find(params[:resolve_user_query_id])
-		resolved_query.resolved = true
+		if resolved_query.resolved
+			resolved_query.resolved = false
+		else
+			resolved_query.resolved = true
+		end
 		resolved_query.save
 		redirect_to(:action => "index")
 	end

@@ -5,7 +5,7 @@
 <head>
 <title>OASIS Administrator</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
+<%= javascript_include_tag :defaults %>
 <!-- webfxlayout.js -->
 <script type="text/javascript">
 
@@ -183,7 +183,7 @@ function WebFXMenuButton() {}
 			</div>
 	    </fieldset>
 		<br /><br />
-		<fieldset class="fieldset" style="width:920px; height:150px;">
+		<fieldset name="fieldseti" class="fieldseti" style="width:920px; height:150px;">
 			<legend class="groupbox">Edit</legend>
 				<% form_remote_tag :id => 'edit_admin', :url => { :action => 'edit_admin' } do %>
 				<div style="position:relative; float:left;">
@@ -246,6 +246,7 @@ function WebFXMenuButton() {}
 			<div style="position:relative; float:right; top:100px; left:-5px">
 				<%= submit_tag "Save" %>
 				<%= button_to_function "Clear", "clearAdminEdit()" %>	  
+				<%= button_to_function "hide", "Element.hide('fieldseti')" %>
 			</div>
 			<% end %>
 	    </fieldset>		
@@ -312,16 +313,20 @@ function WebFXMenuButton() {}
 				</div>				 
 			<div style="position:relative; float:right; top:100px; left:-5px;">
 				<%= submit_tag "Save" %>
-				<%= button_to_function "Clear", "clearAdminAdd()" %>	  	  
+				<%= button_to_function "Clear", "clearAdminAdd()" %>	  	 
+					  
+			
 			</div>
 			<% end %>
 	    </fieldset>
+	   
 		<% form_tag '/admin/enable_admin', :id => "enable_admin" do %>
 		  <%= hidden_field_tag :enable_admin_id, params[:enable_admin_id] %>
 		<% end %>
 		<% form_tag '/admin/disable_admin', :id => "disable_admin" do %>
 		  <%= hidden_field_tag :disable_admin_id, params[:disable_admin_id] %>
 		<% end %>
+		
 	  </div>
 	 
 	  <script language="text/javascript" type="text/javascript">
@@ -336,6 +341,7 @@ function WebFXMenuButton() {}
 				document.getElementById("edit_admin_id").value = nlr1.elements[i][8];		
 				document.getElementById("disable_admin_id").value = nlr1.elements[i][8];	
 				document.getElementById("enable_admin_id").value = nlr1.elements[i][8];	
+				Element.hide('fieldseti')
 				
 			}
 			function clearAdminAdd() {
@@ -1418,6 +1424,7 @@ function WebFXMenuButton() {}
 				document.getElementById("message_subject").value = nlr6.elements[i][2];
 				document.getElementById("message_area").value = nlr6.elements[i][5];
 				document.getElementById("delete_user_query_id").value = nlr6.elements[i][6];	
+				document.getElementById("resolve_user_query_id").value = nlr6.elements[i][6];
 				
 					
 			}

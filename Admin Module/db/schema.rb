@@ -9,12 +9,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090130044858) do
+ActiveRecord::Schema.define(:version => 20090131024018) do
 
   create_table "actions", :force => true do |t|
-    t.text     "action",     :null => false
+    t.text     "action",      :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "asession_id"
   end
 
   create_table "admins", :force => true do |t|
@@ -44,6 +45,7 @@ ActiveRecord::Schema.define(:version => 20090130044858) do
     t.datetime "time_out",   :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "admin_id"
   end
 
   create_table "campus_activities", :force => true do |t|

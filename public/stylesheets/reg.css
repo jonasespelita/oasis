@@ -66,20 +66,26 @@
 	float:right;
 	margin-right:35px;
 }
-#fst {
+.fst {
 display:inline-block;
-width:250px;
+width:180px;
+float:left;
+}
+
+.fstr{
+    display:inline-block;
+    width:260px;
 }
 
 .inst{
 	font-size:10px;
-	display:inline-	block;
+	display:inline-block;
 }
 
 .scd{
-width:110px;
-
 display:inline-block;
+text-align:right;
+width:190px;
 }
 
 .pscd{
@@ -89,5 +95,31 @@ width:170px;
 
 input{
 margin-bottom:10px;
+}
+
+#error{
+    font-weight:bold;
+    color:#990033;
+}
+
+.dfieldWithErrors{
+   
+    width:200px;
+}
+.formError{
+font-weight:bold;
+font-size:10px;
+margin-top:3px;
+margin-right:30px;
+float:right;
+}
+
+.field{
+    width:260px;
+}
+.col_explain{
+
+padding:10px;
+   
 }
 

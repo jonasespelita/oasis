@@ -287,7 +287,7 @@ div.loading {
     font-size:10pt;
 }
 #bot_title{
-font-weight:bold;
+    font-weight:bold;
     background-color:#deeef6;
 
 
@@ -300,7 +300,7 @@ font-weight:bold;
 #bot_title a:hover{
     text-decoration:none;
     color:black;
-   
+
 }
 
 #bot_linkie {
@@ -312,4 +312,17 @@ font-weight:bold;
     font-weight:normal;
 
 }
+
+select{
+    width:150px;
+
+}
+
+
+.formError{
+
+
+}
+
+
 

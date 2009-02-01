@@ -30,6 +30,7 @@ class UsersController < ApplicationController
       render :action => "finish"
      
     end
+    render :action => "new"
   end
   
   def finish
@@ -77,10 +78,59 @@ class UsersController < ApplicationController
     end
   end
 
+
   def show
     
   end
 
+  def vlogin
+      if "#{params[:login]}".length==0
+         render :text => "Your desired username."
+         return
+      end
+      
+    if(User.find_by_login params[:login]  )
+   
+      render :text => "Username has already been taken"
+        
+      else
+     
+ 
+      render :text =>"Ok!"
+    end
+  end
+
+  def vpassword
+    if("#{params[:password]}".length >=6)
+      session[:password] = params[:password]
+      render :text => "Ok!"
+    else
+      render :text => "Use 6 to 32 characters, no spaces."
+    end
+
+  end
+
+  def vconfirm_password
+
+    if params[:confirm_password]== session[:password]
+      render :text => "Ok!"
+    else
+      render :text => "Passwords don't match!"
+    end
+  end
+
+  def vemail
+    if params[:email] =~ /(.+)@(.+)\.(.{3})/
+      if !User.find_by_email(params[:email])
+      render :text => "Ok!"
+      else
+        render :text => "Email has already been registered. Choose another."
+      end
+
+     else
+       render :text => "Invalid Email address."
+     end
+  end
 
 
 end

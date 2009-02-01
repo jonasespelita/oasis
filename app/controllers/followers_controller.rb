@@ -11,7 +11,7 @@ class FollowersController < ApplicationController
   #function to verify idno and vcode
   def verify?(idno, vcode)
     if idno==''|| vcode==''
-      flash[:error]="Fields can not be blank"
+      flash[:error]="Fields cannot be blank."
       return false
     end
 

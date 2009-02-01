@@ -2,48 +2,65 @@
   <div id="sos"></div>
   <div id="top_r"></div>
   <div id="side_r">
-    <b>To register, enter your ward&#39;s ID number and received verification code.</b>
+    <b>Almost Done! We just need your account information to get started.</b>
     <br/><br/>
 
-    <%= error_messages_for :user %>
-<% form_for :user, :url => users_path do |f| -%>
-  <p><label id="fst"for="login">Login</label><br/>
-  <%= f.text_field :login %></p>
-
-  <p><label id="fst" for="email">Email</label><br/>
-  <%= f.text_field :email %></p>
-
-  <p><label id="fst"for="password">Password</label><br/>
-  <%= f.password_field :password %></p>
-
-  <p><label id="fst"for="password_confirmation">Confirm Password</label><br/>
-  <%= f.password_field :password_confirmation %></p>
-
-  <p><%= submit_tag 'Sign up' %></p>
-<% end -%>
+    <div style="display:block; ">
 
 
-   <!--
-    <form action="reg2.html">
-      <fieldset>
-        <label id="fst">Enter your ward's ID number:</label>
-        <input type="text" name="idno" size="30"/>
-        <br/>
+      <% form_for :user, :url => users_path , :html => {:class =>'regform',:id=>'tehform'}do |f| -%>
 
-        <label id="fst">Enter you ward's verificaion code:</label>
-        <input type="text" name="vcode" size="30"/>
-      </fieldset>
+        <table style ="width:580px;">
+          <tbody>
+            <tr><td ><span class="inst"><b>Login information</b></span><hr/></td></tr>
+            <tr>
+              <td class="field"><p><label class="fst"for="login">Username:</label><%= error_message_on "user", :login%>
+                <%= f.text_field :login, "maxlength"=>"32", "size"=>"34"%>
 
-      <fieldset>
-        <br/>
-        <label><b>Please enter the words below for security purposes:</b></label><br/>
-        <label class="sml">This prevents robots and scripts from registering.</label><br/>
-        <img src="images/reg/captcha.png" alt="captcha"/><br/>
-        <input type="submit" value="Next" class = "next_reg"/>
-      </fieldset>
+              </td><td class="col_explain"> <div id="loginmsg">Your desired username.</div></td>
+            </tr>
+            <tr><td><label class="fst"for="password">Password:</label><%= error_message_on "user", :password%>
+            <%= f.password_field :password, "maxlength"=>"32", "size"=>"34"%>  </td><td class="col_explain"><div id="passmsg">Use 6 to 32 characters, no spaces.</div></td></tr>
 
-    </form>-->
+            <tr><td> <label class="fst"for="password_confirmation">Confirm Password:</label><%= error_message_on "user", :password_confirmation%>
+            <%= f.password_field :password_confirmation, "maxlength"=>"32", "size"=>"34" %></td><td class="col_explain"><div id="cpassmsg">Re-type password</div></td></tr>
 
+
+            <tr><td><span class="inst"><b>About yourself</b></span><hr/></td></tr>
+
+            <tr><td><label class="fst"for="first_name">First Name:</label><%= error_message_on "user", :first_name%>
+            <%= f.text_field :first_name, "maxlength"=>"32", "size"=>"34" %></td><td class="col_explain"> </td></tr>
+
+            <tr><td><label class="fst"for="middle_name">Middle Name:</label><span class="inst">optional</span><%= error_message_on "user", :middle_name%><br/>
+            <%= f.text_field :middle_name, "maxlength"=>"32", "size"=>"34" %></td><td class="col_explain"></td></tr>
+
+            <tr><td> <label class="fst"for="last_name">Last Name:</label><%= error_message_on "user", :last_name%><br/>
+            <%= f.text_field :last_name, "maxlength"=>"32", "size"=>"34" %></td><td class="col_explain"></td></tr>
+
+            <tr><td><label class="fst"for="nickname">Nickname:</label><%= error_message_on "user", :nickname%><br/>
+            <%= f.text_field :nickname, "maxlength"=>"10", "size"=>"34" %></td><td class="col_explain"></td></tr>
+
+            <tr><td> <label class="fst"for="address">Address: </label><%= error_message_on "user", :address%><br/>
+            <%= f.text_field :address, "maxlength"=>"64", "size"=>"34" %></td><td class="col_explain"></td></tr>
+            <tr><td ><span class="inst"><b>Contact information</b> <br/>we'll use this for notification purposes</span><hr/></td></tr>
+
+            <tr><td><label class="fst"for="email">Email Address:</label><%= error_message_on "user", :email%>
+            <%= f.text_field :email, "maxlength"=>"32", "size"=>"34" %></td><td class="col_explain"> <div id="emailmsg"></div></td></tr>
+
+
+            <tr><td>  <label class="fst"for="cp_number">Cellphone Number:</label><span class="inst">optional</span>
+            <%= f.text_field :cp_number, "maxlength"=>"32", "size"=>"34"%><%= error_message_on "user", :cp_number%></td><td class="col_explain"></td></tr>
+
+
+            <tr><td></td></tr>
+          </tbody>
+        </table>
+
+        <div style="text-align:center; "><%= submit_tag 'Sign me up!' %></div>
+      <% end -%>
+
+    </div>
+  
   </div>
   <div id="bot_r"></div>
 </div>
@@ -53,7 +70,22 @@
   <div id="pic_r"></div>
 
 </div>
-
+<%= observe_field("user_login",
+  :frequency => 0.25,
+  :update => :loginmsg,
+  :url => { :action => :vlogin }, :with =>'login')%>
+<%= observe_field("user_password",
+  :frequency => 0.25,
+  :update => :passmsg,
+  :url => { :action => :vpassword }, :with =>'password') %>
+<%= observe_field("user_password_confirmation",
+  :frequency => 0.25,
+  :update => :cpassmsg,
+  :url => { :action => :vconfirm_password }, :with =>'confirm_password') %>
+<%= observe_field("user_email",
+  :frequency => 0.25,
+  :update => :emailmsg,
+  :url => { :action => :vemail }, :with =>'email') %>
 
 
 

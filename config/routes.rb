@@ -1,9 +1,13 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :users
   map.root :controller=> 'sessions', :action => 'new'
-  
-  
-  
+
+  map.faq '/faqs', :controller => 'static', :action => 'faq'
+  map.sitemap '/sitemap', :controller => 'static', :action => "sitemap"
+  map.about '/aboutus', :controller => 'static', :action =>'about'
+  map.contact '/contactus', :controller => 'static', :action => 'contactus'
+  map.pri '/privacy', :controller => 'static', :action => 'privacy'
+  map.toc '/terms', :controller =>'static', :action => 'tos'
   map.resource :session
   
   map.change_password '/change_password', :controller => 'users', :action => 'change_password'

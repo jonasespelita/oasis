@@ -9,15 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-<<<<<<< HEAD:db/schema.rb
-<<<<<<< HEAD:db/schema.rb
-ActiveRecord::Schema.define(:version => 20090127095036) do
-=======
-ActiveRecord::Schema.define(:version => 20090117101343) do
->>>>>>> d23cadc789f204faec6630f118a857c796588582:Admin Module/db/schema.rb
-=======
 ActiveRecord::Schema.define(:version => 20090130044858) do
->>>>>>> 6911bf8b40f1e6d685c7895ccdfbfe314719a244:Admin Module/db/schema.rb
 
   create_table "actions", :force => true do |t|
     t.text     "action",     :null => false
@@ -40,7 +32,6 @@ ActiveRecord::Schema.define(:version => 20090130044858) do
   end
 
   create_table "announcements", :force => true do |t|
-    t.datetime "date_time",    :null => false
     t.text     "announcement", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"

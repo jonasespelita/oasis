@@ -7,14 +7,14 @@
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title>Admin: <%= controller.action_name %></title>
 <!-- START_HIGHLIGHT -->
-  <%= stylesheet_link_tag 'myStyles', 'depot' %>
+  <%= stylesheet_link_tag 'myStyles', 'dirlister', 'dirlister_style' %>
 <!-- END_HIGHLIGHT -->
 </head>
 <!-- END:head -->
 <body>
-
-<p style="color: green"><%= flash[:notice] %></p>
-
+<% if flash[:notice] %>
+<p style="border: 2px solid red; padding: 1em; margin-bottom: 2em; background-color: #f0f0f0; font: bold sans-serif;"><%= flash[:notice] %></p>
+<% end %>
 <%= yield  %>
 
 </body>

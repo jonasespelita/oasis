@@ -73,3 +73,10 @@ text-decoration:none;
 color: #FF6600;
 }
 
+.notice {
+  border: 2px solid red;
+  padding: 1em;
+  margin-bottom: 2em;
+  background-color: #f0f0f0;
+  font: bold smaller sans-serif;
+}

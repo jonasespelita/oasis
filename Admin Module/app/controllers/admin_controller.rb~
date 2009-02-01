@@ -28,13 +28,15 @@ class AdminController < ApplicationController
   	session[:admin_id] = nil
   	if request.post?
   		admin = Admin.authenticate(params[:name], params[:password])
-  		if admin && admin.active == true
+  		if admin
+  			if admin.active == true
 			session[:admin_id] = admin.id
 			admin.last_visit = Time.now
 			admin.save
 			redirect_to(:action => "index")
-  		elsif admin.active == false
+  			else admin.active == false
   			flash.now[:notice] = "Your account has been disabled"
+  			end
   		else
   			flash.now[:notice] = "Invalid user/password combination"
   		end
@@ -145,42 +147,52 @@ class AdminController < ApplicationController
 	end
 	
 	def add_admin
-		new_admin = Admin.new
-		new_admin.first_name = params[:add_admin_first_name]
-		new_admin.last_name = params[:add_admin_last_name]
-		new_admin.position = params[:add_admin_position]
-		new_admin.username = params[:add_admin_username]
-		new_admin.email = params[:add_admin_email]
-		new_admin.active = true
-		new_admin.create_password(params[:add_admin_password])
-		unless new_admin.save
-  			redirect_to(:action => "index")
-  		flash[:notice] = "not saved"
-  		end
-  		redirect_to(:action => "index")
+		if params[:add_admin_password] == params[:add_admin_confirm]
+			new_admin = Admin.new
+			new_admin.first_name = params[:add_admin_first_name]
+			new_admin.last_name = params[:add_admin_last_name]
+			new_admin.position = params[:add_admin_position]
+			new_admin.username = params[:add_admin_username]
+			new_admin.email = params[:add_admin_email]
+			new_admin.active = true
+			new_admin.create_password(params[:add_admin_password])
+			unless new_admin.save
+	  		redirect_to(:action => "index")
+	  		flash[:notice] = "not saved"
+	  		else
+	  		redirect_to(:action => "index")
+	  		end
+	  	else
+	  		flash[:notice] = "Add admin passwords do not match"
+	  		redirect_to(:action => "index")
+	  	end
 	end
 	
 	def edit_admin
-  		unless params[:edit_admin_id].blank?
-			edit_admin = Admin.find(params[:edit_admin_id])
-			edit_admin.first_name = params[:edit_admin_first_name]
-			edit_admin.last_name = params[:edit_admin_last_name]
-			edit_admin.position = params[:edit_admin_position]
-			edit_admin.username = params[:edit_admin_username]
-			edit_admin.email = params[:edit_admin_email]
-			unless params[:edit_admin_password].blank?
-				edit_admin.create_password(params[:edit_admin_password])
+		if params[:edit_admin_password] == params[:edit_admin_confirm]
+	  		unless params[:edit_admin_id].blank?
+				edit_admin = Admin.find(params[:edit_admin_id])
+				edit_admin.first_name = params[:edit_admin_first_name]
+				edit_admin.last_name = params[:edit_admin_last_name]
+				edit_admin.position = params[:edit_admin_position]
+				edit_admin.username = params[:edit_admin_username]
+				edit_admin.email = params[:edit_admin_email]
+				unless params[:edit_admin_password].blank?
+					edit_admin.create_password(params[:edit_admin_password])
+				end
+				unless edit_admin.save
+		  		redirect_to(:action => "index")
+		  		flash[:notice] = "not saved"
+		  		end
+		  		
+	  		else
+				redirect_to(:action => "index")
+				flash[:notice] = "Please select an admin to be edited"
 			end
-			unless edit_admin.save
-	  		redirect_to(:action => "index")
-	  		flash[:notice] = "not saved"
-	  		end
-	  		
-  		else
-			redirect_to(:action => "index")
-			flash[:notice] = "Please select an admin to be edited"
-		end
-		redirect_to(:action => "index")
+		else
+	  		flash[:notice] = "Edit admin passwords do not match"
+	  	end
+	  	redirect_to(:action => "index")
 	end
 	
 	def enable_admin

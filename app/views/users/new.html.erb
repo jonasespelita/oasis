@@ -5,25 +5,57 @@
     <b>To register, enter your ward&#39;s ID number and received verification code.</b>
     <br/><br/>
 
-    <%= error_messages_for :user %>
-<% form_for :user, :url => users_path do |f| -%>
-  <p><label id="fst"for="login">Login</label><br/>
-  <%= f.text_field :login %></p>
+    <div style="display:block; height:600px;">
 
-  <p><label id="fst" for="email">Email</label><br/>
-  <%= f.text_field :email %></p>
+      <% form_for :user, :url => users_path , :html => {:class =>'regform'}do |f| -%>
 
-  <p><label id="fst"for="password">Password</label><br/>
-  <%= f.password_field :password %></p>
+        <table>
+          <tbody>
+            <tr>
+              <td class="field"><p><label id="fst"for="login">Username:</label><br/>
+            <%= f.text_field :login%>
+            <%= observe_field("user_login",
+                 :frequency => 0.25,
+                 :update => :loginmsg,
+                 :url => { :action => :vlogin }, :with =>'login') %>
+</p></td><td> <div id="loginmsg">d</div></td>
+            </tr>
+            <tr><td><p><label id="fst"for="password">Password:</label><br/>
+            <%= f.password_field :login%></p>  </td><td><%= error_message_on "user", :password%></td></tr>
 
-  <p><label id="fst"for="password_confirmation">Confirm Password</label><br/>
-  <%= f.password_field :password_confirmation %></p>
+            <tr><td> <p><label id="fst"for="password_confirmation">Confirm Password:</label><br/>
+            <%= f.password_field :password_confirmation %></p></td><td><%= error_message_on "user", :password_confirmation%></td></tr>
 
-  <p><%= submit_tag 'Sign up' %></p>
-<% end -%>
+            <tr><td><p><label id="fst"for="email">Email Address:</label><br/>
+            <%= f.text_field :email %></p></td><td> <%= error_message_on "user", :email%></td></tr>
 
+            <tr><td><p><label id="fst"for="first_name">First Name:</label><br/>
+            <%= f.text_field :first_name %></p></td><td> <%= error_message_on "user", :first_name%></td></tr>
 
-   <!--
+            <tr><td><p><label id="fst"for="middle_name">Middle Name:</label><br/>
+            <%= f.text_field :middle_name %></p></td><td><%= error_message_on "user", :middle_name%></td></tr>
+
+            <tr><td> <p><label id="fst"for="last_name">Last Name:</label><br/>
+            <%= f.text_field :last_name %></p></td><td><%= error_message_on "user", :last_name%></td></tr>
+
+            <tr><td><p><label id="fst"for="nickname">Nickname:</label><br/>
+            <%= f.text_field :nickname %></p></td><td><%= error_message_on "user", :nickname%></td></tr>
+
+            <tr><td> <p><label id="fst"for="address">Address:</label><br/>
+            <%= f.text_field :address %></p></td><td><%= error_message_on "user", :address%></td></tr>
+            
+            <tr><td>  <p><label id="fst"for="address">Cellphone Number:</label><br/>
+            <%= f.text_field :cp_number%></p></td><td><%= error_message_on "user", :cp_number%></td></tr>
+
+            <tr><td></td></tr>
+          </tbody>
+        </table>
+
+        <p><%= submit_tag 'Sign up' %></p>
+      <% end -%>
+
+    </div>
+    <!--
     <form action="reg2.html">
       <fieldset>
         <label id="fst">Enter your ward's ID number:</label>

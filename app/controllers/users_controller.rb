@@ -30,6 +30,7 @@ class UsersController < ApplicationController
       render :action => "finish"
      
     end
+    render :action => "new"
   end
   
   def finish
@@ -77,10 +78,20 @@ class UsersController < ApplicationController
     end
   end
 
+
   def show
     
   end
 
+  def vlogin
+    if(User.find_by_login params[:login])
+      render :text => "Username has already been taken"
+    else
+      render :text =>"ok!"
+    end
+
+
+  end
 
 
 end

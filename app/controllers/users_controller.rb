@@ -84,6 +84,7 @@ class UsersController < ApplicationController
   end
 
   def vlogin
+
       if "#{params[:login]}".length==0
          render :text => "Your desired username."
          return
@@ -130,6 +131,9 @@ class UsersController < ApplicationController
      else
        render :text => "Invalid Email address."
      end
+
+
+
   end
 
 

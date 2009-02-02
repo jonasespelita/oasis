@@ -96,10 +96,10 @@ li#aboutteam a:hover {
 }
 
 #login label {
-    width:109px;
+margin-top:5px;
     display:inline-block;
-    font-weight:bold;
-    font-size: 20px;
+    width:98px;
+    
 
 }
 #rawr{
@@ -118,8 +118,8 @@ li#aboutteam a:hover {
 }
 .side_c{
     background: transparent url(../images/side_c.png) ;
-    width:314px;
-    padding:25px;
+    width:339px;
+    padding: 0 0 0 25px;
 }
 .side_a{
     background: transparent url(../images/side_a.png) ;
@@ -129,7 +129,7 @@ li#aboutteam a:hover {
 }
 .bot_c{
     background: transparent url(../images/bot_c.png) no-repeat;
-    width:363px;
+    width:364px;
     height:11px;
 }
 .bot_a{
@@ -318,10 +318,16 @@ select{
 
 }
 
+.remember {
+    
+    width:260px;
+    font-size:8pt;
+    float:left;
+}
 
-.formError{
+#login_notif{
 
-
+    color:maroon;
 }
 
 

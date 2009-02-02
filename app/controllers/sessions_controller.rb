@@ -35,6 +35,7 @@ class SessionsController < ApplicationController
       redirect_to wards_path
       flash[:notice] = "Logged in as #{current_user.login}"
     else
+      flash[:notice] = "Invalid username/password. Try again."
       render :action => 'new'
     end
   end

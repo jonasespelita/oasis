@@ -1,19 +1,27 @@
 <% if !logged_in? %>
   <% form_tag session_path do -%>
-    <p><label for="login">Login</label><br/>
-    <%= text_field_tag 'login' %></p>
+    <label for="login">Username:</label>
+    <%= text_field_tag 'login' ,"","maxlength" => "32","size" => "32" %>
 
-    <p><label for="password">Password</label><br/>
-    <%= password_field_tag 'password' %></p>
+    <label for="password">Password:</label>
+    <%= password_field_tag 'password',"","maxlength" => "32","size" => "32" %>
 
-    <!-- Uncomment this if you want this functionality
-    <p><label for="remember_me">Remember me:</label>
-    <%= check_box_tag 'remember_me' %></p>
-    -->
+    <br/>
+    <% if flash[:notice] %> <div class="sml" id="login_notif"><%=  flash[:notice] %></div>
+      <% end %>
+    <div style="margin-top:10px">
+      <div class="remember"><span for="remember_me" >Remember me:</span>
+      <%= check_box_tag 'remember_me' %></div>
 
-    <p><%= submit_tag 'Log in' %></p>
-  <% end -%>
+
+      <%= submit_tag 'Log in' %></div>
+    <% end -%>
+
+  <p class="remember">Forgot password?
+    <a id="resend_password_link" >Click here</a>.
+  </p><br/>
+ 
 <% else %>
-<span>Logged in as <%= current_user.login %></span>
-<%= link_to 'logout', logout_path  %>
+  <span>Logged in as <%= current_user.login %></span>
+  <%= link_to 'logout', logout_path  %>
 <% end %>

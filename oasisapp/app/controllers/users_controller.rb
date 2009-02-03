@@ -40,9 +40,6 @@ class UsersController < ApplicationController
     @old = params[:old_password]
   end
 
-
-  #
-  # Change user passowrd
   def change_password_update
     if User.authenticate(current_user.login, params[:old_password])
       if ((params[:password] == params[:password_confirmation]) && !params[:password_confirmation].blank?)
@@ -83,27 +80,37 @@ class UsersController < ApplicationController
     
   end
 
-  def vlogin
 
-      if "#{params[:login]}".length==0
-         render :text => "Your desired username."
-         return
-      end
+  ## validation methods
+  def vlogin
+    if !("#{params[:login]}" =~ /\A[A-Za-z_0-9]*\Z/)
+      render :text => "Special characters are not allowed."
+      return
+    end
+
+    if "#{params[:login]}".length==0
+      render :text => "Your desired username."
+      return
+    end
+    if "#{params[:login]}".length < 6
+      render :text => "Username is too short. Use 6 to 32 characters"
+      return
+    end
       
     if(User.find_by_login params[:login]  )
    
-      render :text => "Username has already been taken"
+      render :text => "Username already taken."
         
-      else
-     
- 
+    else
+    
       render :text =>"Ok!"
     end
   end
 
   def vpassword
+    session[:password] = params[:password]
     if("#{params[:password]}".length >=6)
-      session[:password] = params[:password]
+      
       render :text => "Ok!"
     else
       render :text => "Use 6 to 32 characters, no spaces."
@@ -123,18 +130,58 @@ class UsersController < ApplicationController
   def vemail
     if params[:email] =~ /(.+)@(.+)\.(.{3})/
       if !User.find_by_email(params[:email])
-      render :text => "Ok!"
+        render :text => "Ok!"
       else
         render :text => "Email has already been registered. Choose another."
       end
 
-     else
-       render :text => "Invalid Email address."
-     end
+    else
+      if "#{params[:email]}".length==0
+        render:text => "can't be blank"
 
+      end
+      render :text => "Invalid Email address."
+    end
+  end
+  def vname
+      if !("#{params[:name]}" =~ /\A[A-Za-z]*\Z/)
+      render :text => "Special characters are not allowed."
+      return
+        else
+          if "#{params[:name]}".length!=0
+          render :text => "Ok!"
+          else
+            render :text => ""
+          end
+        end
+    end
 
+  def vnickname
+     if !("#{params[:nickname]}" =~ /\A[A-Za-z\-]*\Z/)
+      render :text => "Special characters are not allowed."
+      return
+        else
+          if "#{params[:nickname]}".length < 2
+            render :text => "Nickname is too short. Use 2 or more characters."
+return
+          end
+          if "#{params[:nickname]}".length!=0
+          render :text => "Ok!"
+          else
+            render :text => ""
+          end
+        end
+  end
+  def vcp_number
+    if params[:cp_number] =~ /\A([\+]?(63[0-9]{10}\Z)|(0[0-9]{10})*\Z)/
+      render :text => "Ok!"
+    else
+      if "#{params[:cp_number]}".length ==0;
+        render :text => ""
+        return
+      end
+      render :text => "Invalid mobile number"
+    end
 
   end
-
-
 end

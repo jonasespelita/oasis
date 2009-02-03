@@ -4,14 +4,24 @@ class User < ActiveRecord::Base
   # Virtual attribute for the unencrypted password
   attr_accessor :password
 
+
   validates_presence_of     :login, :email, :first_name, :last_name, :nickname, :address
   validates_presence_of     :password,                   :if => :password_required?
   validates_presence_of     :password_confirmation,      :if => :password_required?
   validates_length_of       :password, :within => 6..32, :if => :password_required?
   validates_confirmation_of :password,                   :if => :password_required?
   validates_length_of       :login,    :within => 6..32
+  validates_length_of       :nickname, :within => 1..10
   validates_length_of       :email,    :within => 3..100
+  validates_length_of       :nickname,    :within => 2..10
   validates_uniqueness_of   :login, :email, :case_sensitive => false
+
+    validates_format_of        :login, :with => /\A[A-Za-z_]+\Z/
+  validates_format_of        :first_name, :with => /\A[A-Za-z]+\Z/
+  validates_format_of        :middle_name, :with => /(\A[A-Za-z]+\Z)*/
+  validates_format_of        :last_name, :with => /\A[A-Za-z]+\Z/
+  validates_format_of        :nickname, :with => /\A[A-Za-z]+\Z/
+  validates_format_of        :cp_number, :with =>   /\A([\+]?(63[0-9]{10}\Z)|(0[0-9]{10})*\Z)/
   before_save :encrypt_password
   
   # prevents a user from submitting a crafted form that bypasses activation
@@ -69,16 +79,16 @@ class User < ActiveRecord::Base
   end
 
   protected
-    # before filter 
-    def encrypt_password
-      return if password.blank?
-      self.salt = Digest::SHA1.hexdigest("--#{Time.now.to_s}--#{login}--") if new_record?
-      self.crypted_password = encrypt(password)
-    end
+  # before filter
+  def encrypt_password
+    return if password.blank?
+    self.salt = Digest::SHA1.hexdigest("--#{Time.now.to_s}--#{login}--") if new_record?
+    self.crypted_password = encrypt(password)
+  end
       
-    def password_required?
-      crypted_password.blank? || !password.blank?
-    end
+  def password_required?
+    crypted_password.blank? || !password.blank?
+  end
     
     
 end

@@ -1,12 +1,12 @@
 class AdminController < ApplicationController
 	before_filter :authorize, :except => :login
-
+	# request.remote_ip
 	def index
-		@campus_activities = CampusActivities.find(:all)
 		@announcements = Announcements.find(:all)
 		@admins = Admin.find(:all)
 		@queries = Query.find(:all)
 		@users = User.find(:all)
+		@changes = Changes.find(:all)
 		admin = Admin.find(session[:admin_id])
 		if admin.position == 'oa'
 					@is_oa = true
@@ -63,9 +63,9 @@ class AdminController < ApplicationController
   end
   
   def logout
-		session[:admin_id] = nil
+  		session[:admin_id] = nil
 		redirect_to(:action => "login" )
-		flash[:notice] = "Logged out"
+		flash[:message] = "Logged out"
   end
   
   def edit_activity
@@ -77,8 +77,9 @@ class AdminController < ApplicationController
 			unless edited_activity.save
 				redirect_to(:action => "index")
 				flash[:notice] = "not saved"
+			else
+				redirect_to(:action => "index")
 			end
-			redirect_to(:action => "index")
 		else
 			redirect_to(:action => "index")
 			flash[:notice] = "Please select an activity to be edited"
@@ -116,8 +117,14 @@ class AdminController < ApplicationController
 			unless edited_announcement.save
 				redirect_to(:action => "index")
 				flash.now[:notice] = "not saved"
-			end
+			else
+			act = Changes.new
+			act.admin_id = session[:admin_id]
+			act.ip_add = request.remote_ip
+			act.change_made = "Edited announcement #{params[:edit_announcement_name]}"
+			act.save
 			redirect_to(:action => "index")
+			end
 		else
 			redirect_to(:action => "index")
 			flash[:notice] = "Please select an announcement to be edited"
@@ -132,8 +139,15 @@ class AdminController < ApplicationController
   	unless new_announcement.save
   		redirect_to(:action => "index")
   		flash[:notice] = "not saved"
+  	else
+  		act = Changes.new
+		act.admin_id = session[:admin_id]
+		act.ip_add = request.remote_ip
+		act.change_made = "Edited announcement #{params[:add_announcement_name]}"
+		act.save
+  		redirect_to(:action => "index")	
   	end
-  	redirect_to(:action => "index")
+  	
   end
   
 	def delete_announcement
@@ -141,8 +155,15 @@ class AdminController < ApplicationController
 	  	unless deleted_announcement.destroy
 	  		redirect_to(:action => "index")
 	  		flash[:notice] = "not deleted"
+	  	else
+	  		act = Changes.new
+			act.admin_id = session[:admin_id]
+			act.ip_add = request.remote_ip
+			act.change_made = "Deleted announcement #{params[:delete_announcement_name]}"
+			act.save
+			redirect_to(:action => "index")
 	  	end
-	  	redirect_to(:action => "index")
+	  	
   	
 	end
 	
@@ -232,19 +253,50 @@ class AdminController < ApplicationController
 		unless deleted_query.destroy
 	  		redirect_to(:action => "index")
 	  		flash[:notice] = "not deleted"
+	  	else
+	  		act = Changes.new
+			act.admin_id = session[:admin_id]
+			act.ip_add = request.remote_ip
+			act.change_made = "Deleted query from #{params[:delete_user_query_sender]} about #{params[:delete_user_query_subject]}"
+			act.save
+			redirect_to(:action => "index")
 	  	end
-		redirect_to(:action => "index")
+		
 	end
 	
 	def resolve_query
 		resolved_query = Query.find(params[:resolve_user_query_id])
 		if resolved_query.resolved
 			resolved_query.resolved = false
+			act = Changes.new
+			act.admin_id = session[:admin_id]
+			act.ip_add = request.remote_ip
+			act.change_made = "Unresolved query from #{params[:resolve_user_query_sender]} about #{params[:resolve_user_query_subject]}"
+			act.save
 		else
 			resolved_query.resolved = true
+			act = Changes.new
+			act.admin_id = session[:admin_id]
+			act.ip_add = request.remote_ip
+			act.change_made = "Resolved query from #{params[:resolve_user_query_sender]} about #{params[:resolve_user_query_subject]}"
+			act.save
 		end
 		resolved_query.save
 		redirect_to(:action => "index")
+	end
+	
+	def export_actions
+		act = Changes.new
+		act.admin_id = session[:admin_id]
+		act.ip_add = request.remote_ip
+		act.change_made = "Downloaded Actions Log"
+		act.save
+		@changes = Changes.find(:all)
+		render :layout => false
+		headers['Content-Type'] = "application/vnd.ms-excel"
+		headers['Content-Disposition'] = 'attachment; filename="Actions Log.xls"'
+		headers['Cache-Control'] = ''
+		
 	end
 
 		
@@ -252,8 +304,9 @@ class AdminController < ApplicationController
   protected
   	def authorize
   		unless Admin.find_by_id(session[:admin_id])
-  			flash[:notice] = "Please log in"
+  			flash[:message] = "Please log in"
   			redirect_to :action => :login
   		end
-  	end	
+  	end
+  			
 end

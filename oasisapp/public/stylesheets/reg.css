@@ -123,4 +123,12 @@ margin-top:3px;
 padding:10px;
    
 }
+.OkNa{
+    color:green;
+    font-weight:bold;
+}
 
+.fieldWithErrors{
+
+    display:inline-block;
+}

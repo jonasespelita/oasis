@@ -103,15 +103,16 @@ class UsersController < ApplicationController
         
     else
     
-      render :text =>"Ok!"
+      render :text =>"<div class='OkNa'>Ok!</div>"
     end
   end
+
 
   def vpassword
     session[:password] = params[:password]
     if("#{params[:password]}".length >=6)
       
-      render :text => "Ok!"
+      render :text => "<div class='OkNa'>Ok!</div>"
     else
       render :text => "Use 6 to 32 characters, no spaces."
     end
@@ -120,68 +121,83 @@ class UsersController < ApplicationController
 
   def vconfirm_password
 
-    if params[:confirm_password]== session[:password]
-      render :text => "Ok!"
+    if "#{params[:confirm_password]}".length == 0
+      render :text => "Please enter your chosen password again."
+      
     else
-      render :text => "Passwords don't match!"
+      render :text => "Capitalization matters!"
     end
   end
 
   def vemail
     if params[:email] =~ /(.+)@(.+)\.(.{3})/
       if !User.find_by_email(params[:email])
-        render :text => "Ok!"
+        render :text => "<div class='OkNa'>Ok!</div>"
       else
         render :text => "Email has already been registered. Choose another."
       end
 
     else
       if "#{params[:email]}".length==0
-        render:text => "can't be blank"
-
+        render:text => ""
+        return
       end
       render :text => "Invalid Email address."
     end
   end
   def vname
-      if !("#{params[:name]}" =~ /\A[A-Za-z]*\Z/)
+    if !("#{params[:name]}" =~ /\A[A-Za-z\s]*\Z/)
       render :text => "Special characters are not allowed."
       return
-        else
-          if "#{params[:name]}".length!=0
-          render :text => "Ok!"
-          else
-            render :text => ""
-          end
-        end
+    else
+      if "#{params[:name]}".length!=0
+        render :text => "<div class='OkNa'>Ok!</div>"
+      else
+        render :text => ""
+      end
     end
+  end
 
   def vnickname
-     if !("#{params[:nickname]}" =~ /\A[A-Za-z\-]*\Z/)
+    if !("#{params[:nickname]}" =~ /\A[A-Za-z\-\s]*\Z/)
       render :text => "Special characters are not allowed."
       return
-        else
-          if "#{params[:nickname]}".length < 2
-            render :text => "Nickname is too short. Use 2 or more characters."
-return
-          end
-          if "#{params[:nickname]}".length!=0
-          render :text => "Ok!"
-          else
-            render :text => ""
-          end
-        end
-  end
-  def vcp_number
-    if params[:cp_number] =~ /\A([\+]?(63[0-9]{10}\Z)|(0[0-9]{10})*\Z)/
-      render :text => "Ok!"
     else
-      if "#{params[:cp_number]}".length ==0;
-        render :text => ""
+      if "#{params[:nickname]}".length < 2
+        render :text => "Nickname is too short. Use 2 or more characters."
         return
       end
-      render :text => "Invalid mobile number"
+      if "#{params[:nickname]}".length!=0
+        render :text => "<div class='OkNa'>Ok!</div>"
+      else
+        render :text => ""
+      end
+    end
+  end
+
+  def vcp_number
+    if "#{params[:cp_number]}".length ==0;
+      render :text => ""
+      return
+    end
+    if params[:cp_number] =~ /\A([\+]?(63[0-9]{10}\Z)|(0[0-9]{10})*\Z)/
+      render :text => "<div class='OkNa'>Ok!</div>"
+    else
+     
+      render :text => "Invalid mobile number."
     end
 
+  end
+
+  def vaddress
+    if !("#{params[:address]}" =~ /\A[A-Za-z_0-9\s]*\Z/)
+      render :text=> "Invalid address."
+    else
+      if "#{params[:address]}".length == 0
+        render :text => "Enter your home address."
+        return
+      end
+      render :text => "<div class='OkNa'>Ok!</div>"
+    end
   end
 end

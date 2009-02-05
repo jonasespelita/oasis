@@ -28,9 +28,9 @@ class UsersController < ApplicationController
       profile = Profile.find(session[:stud_idno])
       flash[:notice] = "#{profile.fullname}"
       render :action => "finish"
-     
+    else
+      render :action => "new"
     end
-    render :action => "new"
   end
   
   def finish
@@ -47,20 +47,26 @@ class UsersController < ApplicationController
         current_user.password = params[:password]
 
         if current_user.save!
-          flash[:notice] = "Password successfully updated"
-          redirect_to change_password_path
+          flash[:alert] = "Password successfully changed"
+         
         else
           flash[:alert] = "Password not changed"
-          render :action => 'change_password'
+        
         end
 
       else
         flash[:alert] = "New Password mismatch"
-        render :action => 'change_password'
+        
       end
     else
       flash[:alert] = "Old password incorrect"
-      render :action => 'change_password'
+      
+    end
+
+    respond_to do |format|
+      format.html{render :action => 'change_password'}
+      format.js
+      
     end
   end
 
@@ -190,7 +196,7 @@ class UsersController < ApplicationController
   end
 
   def vaddress
-    if !("#{params[:address]}" =~ /\A[A-Za-z_0-9\s]*\Z/)
+    if !("#{params[:address]}" =~ /\A[A-Za-z_0-9\s\#.\-]*\Z/)
       render :text=> "Invalid address."
     else
       if "#{params[:address]}".length == 0
@@ -199,5 +205,15 @@ class UsersController < ApplicationController
       end
       render :text => "<div class='OkNa'>Ok!</div>"
     end
+  end
+
+  def vold_password
+    if current_user.authenticated? params[:password]
+      render :text => "<div class='OkNa'>Ok!</div>"
+
+    else
+      render :text =>"Your old password"
+    end
+
   end
 end

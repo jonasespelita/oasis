@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   validates_uniqueness_of   :login, :email, :case_sensitive => false
 
   validates_format_of         :email, :with => /(.+)@(.+)\.(.{3})/
-  validates_format_of        :login, :with => /\A[A-Za-z_]+\Z/
+  validates_format_of        :login, :with => /\A[A-Za-z_0-9]+\Z/
   validates_format_of        :first_name, :with => /\A[A-Za-z\s]+\Z/
   validates_format_of        :middle_name, :with => /(\A[A-Za-z\s]+\Z)*/
   validates_format_of        :last_name, :with => /\A[A-Za-z\s]+\Z/

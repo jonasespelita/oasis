@@ -1,0 +1,13 @@
+class CreateAsessions < ActiveRecord::Migration
+  def self.up
+    create_table :asessions do |t|
+    	t.string :ip_add, :null => false
+    	t.timsestamp :time_out, :null => false
+      t.timestamps
+    end
+  end
+
+  def self.down
+    drop_table :asessions
+  end
+end

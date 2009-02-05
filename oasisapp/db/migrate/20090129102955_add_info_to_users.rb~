@@ -1,0 +1,17 @@
+class AddInfoToUsers < ActiveRecord::Migration
+  def self.up
+  	add_column :user, :last_name, :string
+  	add_column :user, :first_name, :string
+  	add_column :user, :middle_name, :string
+  	add_column :user, :number_of_wards, :integer, :default => 0
+  	add_column :user, :status, :string
+  end
+
+  def self.down
+  	remove_column :user, :last_name
+  	remove_column :user, :first_name
+  	remove_column :user, :middle_name
+  	remove_column :user, :number_of_wards
+  	remove_column :user, :status
+  end
+end

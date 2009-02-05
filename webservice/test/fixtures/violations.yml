@@ -1,11 +1,13 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  dateOfViolation: MyString
-  offense: MyString
-  memoDetail: MyString
+  idNo: 
+  dateOfViolation: 2009-02-03
+  offense: MyText
+  memoDetail: MyText
 
 two:
-  dateOfViolation: MyString
-  offense: MyString
-  memoDetail: MyString
+  idNo: 
+  dateOfViolation: 2009-02-03
+  offense: MyText
+  memoDetail: MyText

@@ -38,6 +38,12 @@ class UsersController < ApplicationController
   end
   def change_password
     @old = params[:old_password]
+    @lang = case current_user.lang_pref
+    when 1
+     "<option selected='selected'>English</option> <option>Filipino</option>"
+    when 2
+      "<option>English</option> <option selected='selected'>Filipino</option>"
+    end
   end
 
   def change_password_update
@@ -46,21 +52,17 @@ class UsersController < ApplicationController
         current_user.password_confirmation = params[:password_confirmation]
         current_user.password = params[:password]
 
-        if current_user.save!
+        if current_user.save
           flash[:alert] = "Password successfully changed"
-         
         else
           flash[:alert] = "Password not changed"
-        
         end
 
       else
         flash[:alert] = "New Password mismatch"
-        
       end
     else
       flash[:alert] = "Old password incorrect"
-      
     end
 
     respond_to do |format|
@@ -70,14 +72,38 @@ class UsersController < ApplicationController
     end
   end
 
+  def change_profile_update
+    current_user.nickname = params[:n_name]
+    current_user.address = params[:address]
+
+    if current_user.save
+      flash[:name_alert] = "Profile Updated!"
+    else
+      flash[:name_alert] = "Invalid inputs."
+    end
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def change_email
     current_user.email = params[:email]
-    if current_user.save!
-      flash[:notice] = "Email successfully updated"
-      redirect_to change_password_path
+    current_user.cp_number = params[:cp]
+    current_user.lang_pref = 2
+#      case params[:lang]
+#    when "English"
+#      1
+#    when "Filipino"
+#      2
+#    end
+    
+    if current_user.save
+      flash[:e_alert] = "Settings successfully updated #{current_user.id} "
     else
-      flash[:alert] = "Invalid Email"
-      render :action => 'change_password'
+      flash[:e_alert] = "Invalid Input."
+    end
+    respond_to do |format|
+      format.js
     end
   end
 

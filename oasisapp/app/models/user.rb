@@ -23,11 +23,11 @@ class User < ActiveRecord::Base
   validates_format_of        :last_name, :with => /\A[A-Za-z\s]+\Z/
   validates_format_of        :nickname, :with => /\A[A-Za-z]+\Z/
   validates_format_of        :cp_number, :with =>   /\A([\+]?(63[0-9]{10}\Z)|(0[0-9]{10})*\Z)/
-  before_save :encrypt_password
+  before_save :encrypt_password, :set_defaults
   
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
-  attr_accessible :login, :email, :password, :password_confirmation, :first_name, :last_name, :nickname, :address, :terms_of_service, :middle_name, :cp_number
+  attr_accessible :login, :email, :password, :password_confirmation, :first_name, :last_name, :nickname, :address, :terms_of_service, :middle_name, :cp_number, :lang_pref
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
   def self.authenticate(login, password)
@@ -81,6 +81,12 @@ class User < ActiveRecord::Base
 
   protected
   # before filter
+  def set_defaults
+    if !self.lang_pref
+       self.lang_pref = 1
+    end
+   
+  end
   def encrypt_password
     return if password.blank?
     self.salt = Digest::SHA1.hexdigest("--#{Time.now.to_s}--#{login}--") if new_record?

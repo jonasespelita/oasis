@@ -9,14 +9,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-
-ActiveRecord::Schema.define(:version => 20090201045706) do
+ActiveRecord::Schema.define(:version => 20090205141314) do
 
   create_table "actions", :force => true do |t|
-    t.text     "action",      :null => false
+    t.text     "action",     :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "asession_id"
   end
 
   create_table "admins", :force => true do |t|
@@ -29,21 +27,16 @@ ActiveRecord::Schema.define(:version => 20090201045706) do
     t.boolean  "active",                        :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "email"
+    t.datetime "last_visit"
   end
 
   create_table "announcements", :force => true do |t|
+    t.datetime "date_time",    :null => false
     t.text     "announcement", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "summary"
-  end
-
-  create_table "asessions", :force => true do |t|
-    t.string   "ip_add",     :null => false
-    t.datetime "time_out",   :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "admin_id"
   end
 
   create_table "campus_activities", :force => true do |t|
@@ -66,6 +59,15 @@ ActiveRecord::Schema.define(:version => 20090201045706) do
     t.datetime "updated_at"
   end
 
+  create_table "queries", :force => true do |t|
+    t.string   "subject",                       :null => false
+    t.text     "message"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "resolved",   :default => false
+  end
+
   create_table "students", :force => true do |t|
     t.string   "idno"
     t.string   "name"
@@ -83,13 +85,18 @@ ActiveRecord::Schema.define(:version => 20090201045706) do
     t.string   "remember_token"
     t.datetime "remember_token_expires_at"
     t.datetime "last_login"
+    t.datetime "cur_login"
     t.string   "last_name"
     t.string   "first_name"
     t.string   "middle_name"
+    t.integer  "number_of_wards",                         :default => 0
+    t.string   "status"
     t.string   "address"
     t.string   "cp_number"
     t.integer  "lang_pref"
     t.string   "nickname"
+    t.boolean  "email_pref"
+    t.boolean  "mobile_pref"
   end
 
   create_table "violations", :force => true do |t|

@@ -1,6 +1,5 @@
 class Admin < ActiveRecord::Base
-	has_many :asessions
-	has_many :actions, :through => :asessions
+	has_many :changes
 	
 	validates_presence_of     :username
   validates_uniqueness_of   :username
@@ -28,6 +27,10 @@ class Admin < ActiveRecord::Base
 		
 		def password
 		  @password
+		end
+		
+		def get_name
+			"#{self.first_name} #{self.last_name}"
 		end
 		
 		def create_password(pwd)

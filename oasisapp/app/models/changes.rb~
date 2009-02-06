@@ -1,0 +1,2 @@
+class Changes < ActiveRecord::Base
+end

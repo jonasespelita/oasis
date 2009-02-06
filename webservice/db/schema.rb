@@ -9,7 +9,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090113071621) do
+ActiveRecord::Schema.define(:version => 20090203125338) do
+
+  create_table "announcements", :force => true do |t|
+    t.date     "eventDate"
+    t.string   "event"
+    t.string   "memoDetail"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "attendances", :force => true do |t|
     t.integer  "idNo"
@@ -18,6 +26,65 @@ ActiveRecord::Schema.define(:version => 20090113071621) do
     t.string   "absences"
     t.string   "attendanceStatus"
     t.date     "asOfDate"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "class_schedules", :force => true do |t|
+    t.integer  "idNo"
+    t.integer  "code"
+    t.string   "courseNo"
+    t.string   "descriptiveTitle"
+    t.integer  "units"
+    t.time     "time"
+    t.string   "day"
+    t.string   "room"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "course_offerings", :force => true do |t|
+    t.integer  "semester"
+    t.integer  "endSchYr"
+    t.string   "college"
+    t.integer  "code"
+    t.string   "courseNo"
+    t.string   "descriptiveTitle"
+    t.time     "time"
+    t.string   "day"
+    t.string   "room"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "grades", :force => true do |t|
+    t.integer  "idNo"
+    t.integer  "semester"
+    t.integer  "endSchYr"
+    t.string   "courseNo"
+    t.string   "descriptiveTitle"
+    t.integer  "units"
+    t.integer  "grade"
+    t.string   "remark"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "guidances", :force => true do |t|
+    t.integer  "idNo"
+    t.time     "time"
+    t.date     "day"
+    t.text     "room"
+    t.text     "guidanceStatus"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "payment_schedules", :force => true do |t|
+    t.integer  "idNo"
+    t.date     "dateOfPayment"
+    t.float    "amt"
+    t.string   "textDetail"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -54,13 +121,30 @@ ActiveRecord::Schema.define(:version => 20090113071621) do
     t.datetime "updated_at"
   end
 
+  create_table "tfassessments", :force => true do |t|
+    t.integer  "idNo"
+    t.string   "gradingTerm"
+    t.float    "payAmt"
+    t.date     "balanceAsOf"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tfbreakdowns", :force => true do |t|
+    t.integer  "idNo"
+    t.string   "item"
+    t.float    "feeAmt"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "violations", :force => true do |t|
-    t.string   "dateOfViolation"
+    t.integer  "idNo"
+    t.date     "dateOfViolation"
     t.string   "offense"
     t.string   "memoDetail"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "idno"
   end
 
 end

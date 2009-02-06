@@ -1,0 +1,8 @@
+class FixFkActionsAgain < ActiveRecord::Migration
+  def self.up
+  		execute "ALTER TABLE asessions DROP CONSTRAINT fk_actions_to_asessions;"
+  end
+
+  def self.down
+  end
+end

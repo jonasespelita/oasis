@@ -2,8 +2,16 @@ ActionController::Routing::Routes.draw do |map|
   # The priority is based upon order of creation: first created -> highest priority.
 map.resources :students
 map.resources :profiles
-map.resources :violations
-
+map.resources :violation
+map.resources :attendance
+map.resources :announcement
+map.resources :classSchedule
+map.resources :courseOfferings
+map.resources :grade
+map.resources :guidance
+map.resources :paymentSchedule
+map.resources :tfassessment
+map.resources :tfbreakdown
   # Sample of regular route:
   #   map.connect 'products/:id', :controller => 'catalog', :action => 'view'
   # Keep in mind you can assign values other than :controller and :action

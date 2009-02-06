@@ -9,12 +9,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090205141314) do
+ActiveRecord::Schema.define(:version => 20090202005827) do
 
   create_table "actions", :force => true do |t|
     t.text     "action",     :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "admin_id"
+    t.string   "ip_add"
   end
 
   create_table "admins", :force => true do |t|
@@ -37,6 +39,14 @@ ActiveRecord::Schema.define(:version => 20090205141314) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "summary"
+  end
+
+  create_table "asessions", :force => true do |t|
+    t.string   "ip_add",     :null => false
+    t.datetime "time_out",   :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "admin_id"
   end
 
   create_table "campus_activities", :force => true do |t|
@@ -91,12 +101,6 @@ ActiveRecord::Schema.define(:version => 20090205141314) do
     t.string   "middle_name"
     t.integer  "number_of_wards",                         :default => 0
     t.string   "status"
-    t.string   "address"
-    t.string   "cp_number"
-    t.integer  "lang_pref"
-    t.string   "nickname"
-    t.boolean  "email_pref"
-    t.boolean  "mobile_pref"
   end
 
   create_table "violations", :force => true do |t|

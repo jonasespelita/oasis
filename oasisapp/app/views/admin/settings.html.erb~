@@ -34,23 +34,23 @@
 			<legend class="groupbox">Change password</legend>
 			<% form_tag do %>
 				<span style="position:relative; float:left; top:10px; left:18px;" >
-					<label for="current_password">Current Password:</label>
+					<label for="current_password">Current Password:</label><br>
 					<%= password_field_tag :current_password, params[:current_password], :size => 24 %>
 				</span>
 				<span style="position:relative; float:left; top:20px; left:18px;" >
-					<label for="new_password">New Password:</label>
+					<label for="new_password">New Password:</label><br>
 					<%= password_field_tag :new_password, params[:new_password], :size => 24 %>
 				</span>
 				<span style="position:relative; float:left; top:30px; left:18px;" >
-					<label for="confirm_password">Confirm Password:</label>
+					<label for="confirm_password">Confirm Password:</label><br>
 					<%= password_field_tag :confirm_password, params[:confirm_password], :size => 24 %>
-				</span>
-				<span style="position:relative; float:right; top:40px;" >
+				</span><br>
+				<span style="position:relative; float:right; top:80px;" >
 					<%= submit_tag "Save" %>
 				</span>
 				
 			<% end %>
-			<span style="position:relative; float:right; top:40px;" >
+			<span style="position:relative; float:right; left: -2px" >
 					<%= button_to "Back", :action => 'index'  %>
 			</span>
 		</fieldset>	

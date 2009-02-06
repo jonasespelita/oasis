@@ -13,14 +13,14 @@ class StudentsController < ApplicationController
   # http://localhost:3000/students/
   def index
     @students = Student.find(:all)
-    render :xml => @students.to_xml # use rail's automatic xml parser to convert object to xml =P
+    render :xml => @students # use rail's automatic xml parser to convert object to xml =P
   end
 
 
   # http://localhost:3000/students/1
   def show
     @student = Student.find_by_idno(params[:id])
-    render :xml => @student.to_xml
+    render :xml => @student
   end
 
 end

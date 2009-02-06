@@ -141,13 +141,13 @@ function WebFXMenuButton() {}
 				nlr1.updateHeader(aa);
 				<% @admins.each{ |admin| %>
 						<%	unless admin.position == 'oa' %>
-							aa[0]= <%= (admin.first_name + ' ' + admin.last_name).to_json %>
+							aa[0]= <%= admin.get_name.to_json %>
 							aa[1]= <%= admin.username.to_json %>
 							aa[2]= <%= admin.position.to_json %>
 							<% if admin.last_visit.nil? %>
 								aa[3]= 'n/a'
 							<% else %>
-								aa[3]= <%= admin.last_visit.to_json %>
+								aa[3]= <%= admin.last_visit.strftime("%m/%d/%Y %I:%M%p").to_json %>
 							<% end %> 
 							aa[4]= <%= if admin.active then ('Active').to_json else ('Inactive').to_json end %>
 							aa[5]= <%= admin.first_name.to_json %>
@@ -652,7 +652,7 @@ function WebFXMenuButton() {}
 					Records Deleted Last: <br /><br />
 					Number of Blocked Accounts: <br /><br />
 				</div>
-				<div style="position:relative; float:left; text-alignt:right; left:10px; top:1px;">
+				<div style="position:relative; float:left; text-align:right; left:10px; top:1px;">
 					15,825 <br /><br />
 					21,512 <br /><br />
 					265 <br /><br />
@@ -674,10 +674,11 @@ function WebFXMenuButton() {}
 	    
 		From: <select><option>September 16, 2008</option></select>&nbsp;&nbsp;&nbsp;To: <select><option>September 17, 2008</option></select>			
 		&nbsp;&nbsp;<input type="button" value="Filter">
+		
 		<br /><br />
 		
-		<fieldset class="fieldset" style="width: 920px; height: 550px;">	
-			<div style="overflow:auto; height:550px;">
+		<fieldset class="fieldset" style="width: 920px; height: 525px;">	
+			<div style="overflow:auto; height:525px;">
 				<script language="text/javascript" type="text/javascript">
 					<!--
 					//  let's create our list object
@@ -694,164 +695,32 @@ function WebFXMenuButton() {}
 
 					//  update the header and redraw
 					nlr4.updateHeader(ad);
+					<% @changes.each{ |change| %>
+					
+							ad[0]= <%= change.created_at.strftime("%m/%d/%Y %I:%M%p").to_json %>
+							ad[1]= <%= Admin.find(change.admin_id).get_name.to_json %>
+							ad[2]= <%= change.change_made.to_json %>
+							ad[3]= <%= change.ip_add.to_json %>
+							nlr4.silentAdd(ad)
+						
+					<% } %>
 
 					ad[0]='September 17, 2008 23:59';
 					ad[1]='Karlos Ong';
-					ad[2]='Blocked Account shreker';
+					ad[2]='Blocked Account';
 					ad[3]='192.168.100.100';
 					nlr4.silentAdd(ad);
 					
-					ad[0]='September 17, 2008 23:58';
-					ad[1]='Karlos Ong';
-					ad[2]='Unblock Account damascus';
-					ad[3]='192.168.100.100';
-					nlr4.silentAdd(ad);
-					
-					ad[0]='September 17, 2008 23:57';
-					ad[1]='Karlos Ong';
-					ad[2]='Blocked Account tagbat';
-					ad[3]='192.168.100.100';
-					nlr4.silentAdd(ad);
-					
-					ad[0]='September 17, 2008 21:57';
-					ad[1]='Jennifer Walters';
-					ad[2]='Uploaded Student Information (5)';
-					ad[3]='192.168.100.100';
-					nlr4.silentAdd(ad);
-					
-					ad[0]='September 17, 2008 21:53';
-					ad[1]='Jennifer Walters';
-					ad[2]='Uploaded Curriculums (1)';
-					ad[3]='192.168.100.100';
-					nlr4.silentAdd(ad);
-					
-					ad[0]='September 17, 2008 21:50';
-					ad[1]='Jennifer Walters';
-					ad[2]='Uploaded Fees and Balances (20)';
-					ad[3]='192.168.100.100';
-					nlr4.silentAdd(ad);					
-					
-					ad[0]='September 17, 2008 21:45';
-					ad[1]='Jennifer Walters';
-					ad[2]='Purged Student Records(30)';
-					ad[3]='192.168.100.100';
-					nlr4.silentAdd(ad);
-					
-					ad[0]='September 17, 2008 21:41';
-					ad[1]='Jennifer Walters';
-					ad[2]='Purged User Accounts(10)';
-					ad[3]='192.168.100.100';
-					nlr4.silentAdd(ad);
-					
-					ad[0]='September 17, 2008 21:21';
-					ad[1]='Jennifer Walters';
-					ad[2]='Purged Student Records(5) and User Accounts(3)';
-					ad[3]='192.168.100.100';
-					nlr4.silentAdd(ad);
-					
-					<!-- Duplicates -->
-					ad[0]='September 17, 2008 4:00';
-					ad[1]='Karlos Ong';
-					ad[2]='Unblock Account loveis';
-					ad[3]='192.168.100.100';
-					nlr4.silentAdd(ad);
-					
-					ad[0]='September 17, 2008 3:59';
-					ad[1]='Karlos Ong';
-					ad[2]='Blocked Account converse';
-					ad[3]='192.168.100.100';
-					nlr4.silentAdd(ad);
-					
-					ad[0]='September 17, 2008 3:58';
-					ad[1]='Karlos Ong';
-					ad[2]='Unblock Account macatag';
-					ad[3]='192.168.100.100';
-					nlr4.silentAdd(ad);
-					
-					ad[0]='September 17, 2008 3:57';
-					ad[1]='Karlos Ong';
-					ad[2]='Blocked Account doctormom';
-					ad[3]='192.168.100.100';
-					nlr4.silentAdd(ad);
-					
-					ad[0]='September 17, 2008 2:57';
-					ad[1]='Jennifer Walters';
-					ad[2]='Uploaded Student Information (5)';
-					ad[3]='192.168.100.100';
-					nlr4.silentAdd(ad);
-					
-					ad[0]='September 17, 2008 2:53';
-					ad[1]='Jennifer Walters';
-					ad[2]='Uploaded Curriculums (1)';
-					ad[3]='192.168.100.100';
-					nlr4.silentAdd(ad);
-					
-					ad[0]='September 17, 2008 2:50';
-					ad[1]='Jennifer Walters';
-					ad[2]='Uploaded Fees and Balances (20)';
-					ad[3]='192.168.100.100';
-					nlr4.silentAdd(ad);					
-					
-					ad[0]='September 17, 2008 1:45';
-					ad[1]='Jennifer Walters';
-					ad[2]='Purged Student Records(30)';
-					ad[3]='192.168.100.100';
-					nlr4.silentAdd(ad);
-					
-					ad[0]='September 17, 2008 1:41';
-					ad[1]='Jennifer Walters';
-					ad[2]='Purged User Accounts(10)';
-					ad[3]='192.168.100.100';
-					nlr4.silentAdd(ad);
-					
-					ad[0]='September 17, 2008 1:30';
-					ad[1]='Jennifer Walters';
-					ad[2]='Purged Student Records(5) and User Accounts(3)';
-					ad[3]='192.168.100.100';
-					nlr4.silentAdd(ad);
-					
-					ad[0]='September 17, 2008 2:57';
-					ad[1]='Jennifer Walters';
-					ad[2]='Uploaded Student Information (5)';
-					ad[3]='192.168.100.100';
-					nlr4.silentAdd(ad);
-					
-					ad[0]='September 17, 2008 2:53';
-					ad[1]='Jennifer Walters';
-					ad[2]='Uploaded Curriculums (1)';
-					ad[3]='192.168.100.100';
-					nlr4.silentAdd(ad);
-					
-					ad[0]='September 17, 2008 2:50';
-					ad[1]='Jennifer Walters';
-					ad[2]='Uploaded Fees and Balances (20)';
-					ad[3]='192.168.100.100';
-					nlr4.silentAdd(ad);
-					
-					ad[0]='September 17, 2008 1:45';
-					ad[1]='Jennifer Walters';
-					ad[2]='Purged Student Records(30)';
-					ad[3]='192.168.100.100';
-					nlr4.silentAdd(ad);
-					
-					ad[0]='September 17, 2008 1:41';
-					ad[1]='Jennifer Walters';
-					ad[2]='Purged User Accounts(10)';
-					ad[3]='192.168.100.100';
-					nlr4.silentAdd(ad);
-					
-					ad[0]='September 17, 2008 1:30';
-					ad[1]='Jennifer Walters';
-					ad[2]='Purged Student Records(5) and User Accounts(3)';
-					ad[3]='192.168.100.100';
-					nlr4.silentAdd(ad);
+				
 					
 					nlr4.draw();
 					-->  
 			  </script>
 			</div>
 		</fieldset>
-	    
+		   <span style= "float:right;">
+	    		<%= button_to "Download Reports to Excel", :action => "export_actions" %>
+	    	</span>
 	  </div>	  
 	  
 	  <div class="tab-page" id="tabPage3">
@@ -879,7 +748,7 @@ function WebFXMenuButton() {}
 					nlr10.updateHeader(aj);
 
 						<% @announcements.each{ |announcement| %>
-						aj[0]= <%= announcement.date_time.to_json %>
+						aj[0]= <%= announcement.date_time.strftime("%m/%d/%Y %I:%M%p").to_json %>
 						aj[1]= <%= announcement.announcement.to_json %>
 						aj[2]= <%= announcement.summary.to_json %>
 						aj[3]= <%= announcement.id.to_json %>
@@ -943,6 +812,7 @@ function WebFXMenuButton() {}
 						<% end %>
 						<% form_tag '/admin/delete_announcement', :id => "delete_ann" do %>
 							<%= hidden_field_tag :delete_announcement_id, params[:delete_announcement_id] %>
+							<%= hidden_field_tag :delete_announcement_name, params[:delete_announcement_name] %>
 						<% end %>
 					</div>					
 		    </fieldset>
@@ -1014,6 +884,7 @@ function WebFXMenuButton() {}
 			function clickDeleteAnn(){
 				var j = nlr10.selected;
 				document.getElementById("delete_announcement_id").value = nlr10.elements[j][3];
+				document.getElementById("delete_announcement_name").value = nlr10.elements[j][1];
 				document.getElementById("delete_ann").submit();	
 			}
 			function clickAddAnn(){
@@ -1232,7 +1103,7 @@ function WebFXMenuButton() {}
 		<br /><br />
 		
 		<fieldset class="fieldset" style="width:920px; height:240px;">
-			<div style="position:relative; overflow:auto;"onclick="clickUserQuery()">
+			<div style="position:relative;height:200px; overflow:auto;"onclick="clickUserQuery()">
 			<script language="text/javascript" type="text/javascript">
 				<!--
 				//  let's create our list object
@@ -1256,13 +1127,13 @@ function WebFXMenuButton() {}
 						af[0]= <%= cur_user.get_full_name.to_json %>
 						af[1]= <%= cur_user.email.to_json %>
 						af[2]= <%= query.subject.to_json %>
-						af[3]= <%= query.created_at.to_json %>
+						af[3]= <%= query.created_at.strftime("%m/%d/%Y %I:%M%p").to_json %>
 						af[4]= <%= if query.resolved then ('Yes').to_json else ('No').to_json end %>
 						af[5]= <%= query.message.to_json %>
 						af[6]= <%= query.id.to_json %>
 						nlr6.silentAdd(af)
 					<% } %>
-					<% remain = 9 - @queries.length %>
+					<% remain = 8 - @queries.length %>
 					<% if remain > 0 %>
 						<% remain.times do %>
 							af[0]= ''
@@ -1309,9 +1180,13 @@ function WebFXMenuButton() {}
 		</fieldset>
 		<% form_tag '/admin/delete_query', :id => "delete_query" do %>
 							<%= hidden_field_tag :delete_user_query_id, params[:delete_user_query_id] %>
+							<%= hidden_field_tag :delete_user_query_subject, params[:delete_user_query_subject] %>
+							<%= hidden_field_tag :delete_user_query_sender, params[:delete_user_query_sender] %>
 		<% end %>
 		<% form_tag '/admin/resolve_query', :id => "resolve_query" do %>
 							<%= hidden_field_tag :resolve_user_query_id, params[:resolve_user_query_id] %>
+							<%= hidden_field_tag :resolve_user_query_subject, params[:resolve_user_query_subject] %>
+							<%= hidden_field_tag :resolve_user_query_sender, params[:resolve_user_query_sender] %>
 		<% end %>
 	  </div>
 	  <script language="text/javascript" type="text/javascript">
@@ -1321,7 +1196,11 @@ function WebFXMenuButton() {}
 				document.getElementById("message_subject").value = nlr6.elements[i][2];
 				document.getElementById("message_area").value = nlr6.elements[i][5];
 				document.getElementById("delete_user_query_id").value = nlr6.elements[i][6];	
+				document.getElementById("delete_user_query_subject").value = nlr6.elements[i][2];
+				document.getElementById("delete_user_query_sender").value = nlr6.elements[i][0];
 				document.getElementById("resolve_user_query_id").value = nlr6.elements[i][6];
+				document.getElementById("resolve_user_query_subject").value = nlr6.elements[i][2];
+				document.getElementById("resolve_user_query_sender").value = nlr6.elements[i][0];
 				Element.show("Sender");
 				Element.show("MessageBox");
 					
@@ -1341,10 +1220,12 @@ function WebFXMenuButton() {}
 				document.getElementById("resolve_query").submit();
 			}
 		</script>
-		
-	<div style="position:relative; float:right; left:-9px;">
-		Website Status: <select><option>Online</option><option>Offline</option></select> <input type="button" value="Change">
-	</div>
+		<div class="tab-page" id="tabPage11">
+			 <h2 class="tab">Site Settings</h2>
+			<div style="position:relative; float:right; left:-9px;">
+				Website Status: <select><option>Online</option><option>Offline</option></select> <input type="button" value="Change">
+			</div>
+		</div>
 </div> <!--end of container-->
 
 <script type="text/javascript">

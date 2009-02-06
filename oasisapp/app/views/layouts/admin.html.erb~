@@ -13,10 +13,7 @@
 <!-- END:head -->
 <body>
 <% if flash[:notice] %>
-<p style="border: 2px solid red; padding: 1em; margin-bottom: 2em; background-color: #f0f0f0; font: bold sans;"><%= flash[:notice] %></p>
-<% end %>
-<% if flash[:message] %>
-<p style="border: 2px solid lightgreen; padding:1em; margin-bottom: 2em; background-color: lightslategrey; font:bold sans;color:green"><%= flash[:message] %></p>
+<p style="border: 2px solid red; padding: 1em; margin-bottom: 2em; background-color: #f0f0f0; font: bold sans-serif;"><%= flash[:notice] %></p>
 <% end %>
 <%= yield  %>
 

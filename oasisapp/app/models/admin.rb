@@ -1,7 +1,7 @@
 class Admin < ActiveRecord::Base
 	has_many :changes
 	
-	validates_presence_of     :username
+  validates_presence_of     :username
   validates_uniqueness_of   :username
  
   attr_accessor :password_confirmation

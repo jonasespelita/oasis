@@ -9,7 +9,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090202013101) do
+ActiveRecord::Schema.define(:version => 20090202005827) do
+
+  create_table "actions", :force => true do |t|
+    t.text     "action",     :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "admin_id"
+    t.string   "ip_add"
+  end
 
   create_table "admins", :force => true do |t|
     t.string   "username",        :limit => 40, :null => false
@@ -26,10 +34,19 @@ ActiveRecord::Schema.define(:version => 20090202013101) do
   end
 
   create_table "announcements", :force => true do |t|
+    t.datetime "date_time",    :null => false
     t.text     "announcement", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "summary"
+  end
+
+  create_table "asessions", :force => true do |t|
+    t.string   "ip_add",     :null => false
+    t.datetime "time_out",   :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "admin_id"
   end
 
   create_table "campus_activities", :force => true do |t|
@@ -38,14 +55,6 @@ ActiveRecord::Schema.define(:version => 20090202013101) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "summary"
-  end
-
-  create_table "changes", :force => true do |t|
-    t.text     "change_made", :null => false
-    t.string   "ip_add"
-    t.integer  "admin_id",    :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "followers", :force => true do |t|

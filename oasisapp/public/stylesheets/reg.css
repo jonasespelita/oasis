@@ -68,7 +68,7 @@
 }
 .fst {
 display:inline-block;
-width:180px;
+
 float:left;
 }
 
@@ -107,11 +107,12 @@ margin-bottom:10px;
     width:200px;
 }
 .formError{
+    color:maroon;
 font-weight:bold;
 font-size:10px;
 margin-top:3px;
-margin-right:30px;
-float:right;
+
+
 }
 
 .field{
@@ -119,7 +120,15 @@ float:right;
 }
 .col_explain{
 
-padding:10px;
+padding-left:20px;
    
 }
+.OkNa{
+    color:green;
+    font-weight:bold;
+}
 
+.fieldWithErrors{
+
+    display:inline-block;
+}

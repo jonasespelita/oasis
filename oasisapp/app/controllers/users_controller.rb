@@ -37,6 +37,7 @@ class UsersController < ApplicationController
     
   end
   def change_password
+    @user = current_user
     @old = params[:old_password]
     @lang = case current_user.lang_pref
     when 1
@@ -44,6 +45,9 @@ class UsersController < ApplicationController
     when 2
       "<option>English</option> <option selected='selected'>Filipino</option>"
     end
+
+    @checkemail = current_user.email_pref
+    @checkcp = current_user.mobile_pref
   end
 
   def change_password_update
@@ -90,6 +94,8 @@ class UsersController < ApplicationController
     current_user.email = params[:email]
     current_user.cp_number = params[:cp]
     current_user.lang_pref = 2
+    current_user.mobile_pref = params[:val2]
+    current_user.email_pref = params[:val1]
 #      case params[:lang]
 #    when "English"
 #      1
@@ -98,7 +104,7 @@ class UsersController < ApplicationController
 #    end
     
     if current_user.save
-      flash[:e_alert] = "Settings successfully updated #{current_user.id} "
+      flash[:e_alert] = "Settings successfully updated}"
     else
       flash[:e_alert] = "Invalid Input."
     end

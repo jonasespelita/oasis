@@ -83,7 +83,7 @@ class User < ActiveRecord::Base
   # before filter
   def set_defaults
     if !self.lang_pref
-       self.lang_pref = 1
+      self.lang_pref = 1
     end
    
   end

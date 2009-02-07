@@ -9,14 +9,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090202005827) do
+ActiveRecord::Schema.define(:version => 20090206155601) do
 
   create_table "actions", :force => true do |t|
     t.text     "action",     :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "admin_id"
-    t.string   "ip_add"
   end
 
   create_table "admins", :force => true do |t|
@@ -29,8 +28,6 @@ ActiveRecord::Schema.define(:version => 20090202005827) do
     t.boolean  "active",                        :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "email"
-    t.datetime "last_visit"
   end
 
   create_table "announcements", :force => true do |t|
@@ -57,6 +54,14 @@ ActiveRecord::Schema.define(:version => 20090202005827) do
     t.text     "summary"
   end
 
+  create_table "changes", :force => true do |t|
+    t.text     "change_made", :null => false
+    t.string   "ip_add"
+    t.integer  "admin_id",    :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "followers", :force => true do |t|
     t.integer  "idno"
     t.integer  "user_id"
@@ -78,9 +83,9 @@ ActiveRecord::Schema.define(:version => 20090202005827) do
     t.boolean  "resolved",   :default => false
   end
 
-  create_table "students", :force => true do |t|
-    t.string   "idno"
-    t.string   "name"
+  create_table "sms", :force => true do |t|
+    t.string   "smstext"
+    t.string   "phone"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -101,6 +106,12 @@ ActiveRecord::Schema.define(:version => 20090202005827) do
     t.string   "middle_name"
     t.integer  "number_of_wards",                         :default => 0
     t.string   "status"
+    t.string   "address"
+    t.string   "cp_number"
+    t.integer  "lang_pref"
+    t.string   "nickname"
+    t.boolean  "email_pref"
+    t.boolean  "mobile_pref"
   end
 
   create_table "violations", :force => true do |t|

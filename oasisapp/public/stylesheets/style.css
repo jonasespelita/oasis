@@ -96,10 +96,10 @@ li#aboutteam a:hover {
 }
 
 #login label {
-margin-top:5px;
+    margin-top:5px;
     display:inline-block;
     width:98px;
-    
+
 
 }
 #rawr{
@@ -319,7 +319,7 @@ select{
 }
 
 .remember {
-    
+
     width:260px;
     font-size:8pt;
     float:left;
@@ -330,5 +330,35 @@ select{
     color:maroon;
 }
 
+dt{
+    float:left;
+    width:119px;
+    color:#808080;
 
+}
+dd,dt{
+    font-size:12px;
+}
+dd{
 
+}
+
+.headr{
+    background:#ECEFF5 none repeat scroll 0 0;
+    display:block;
+    position:relative;
+    left:-10px;
+    width:100%;
+    padding-left:10px;
+}
+
+.box{
+    border:1px solid #C1DAD7;
+    margin-bottom:10px;
+    padding:0 0 10px 10px;
+}
+
+#f_info{
+
+    height:183px;
+}

@@ -1,7 +1,7 @@
 class ViolationController < ApplicationController
   def index
     if params[:idno]
-      @profiles = Violation.find_all_by_idNo params[:idno]
+      @profiles = Violation.find_all_by_idno params[:idno]
     else
       @profiles = Violation.find(:all)
     end
@@ -12,7 +12,7 @@ class ViolationController < ApplicationController
 
   # http://localhost:3000/violations/2061009
   def show
-    @profile = Violation.find_by_idNo(params[:id])
+    @profile = Violation.find_by_idno(params[:id])
     if @profile
       render :xml => @profile.to_xml
     else

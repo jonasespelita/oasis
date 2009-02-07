@@ -5,7 +5,7 @@
     <b>Please enter your ward&#39;s ID number and received verification code.</b>
     <br/><br/>
     <% if flash[:error] %>
-      <div id ="error"><%= image_tag "error.png" %>
+      <div class ="error"><%= image_tag "error.png" %>
 <%= flash[:error] %></div>
         <% end %>
     <% form_tag :controller => 'followers',:action => 'create' do %>

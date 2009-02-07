@@ -57,16 +57,16 @@ class UsersController < ApplicationController
         current_user.password = params[:password]
 
         if current_user.save
-          flash[:alert] = "Password successfully changed"
+          flash[:alert] = "Password successfully changed."
         else
-          flash[:alert] = "Password not changed"
+          flash[:alert] = "Password not changed."
         end
 
       else
-        flash[:alert] = "New Password mismatch"
+        flash[:alert] = "New Password mismatch."
       end
     else
-      flash[:alert] = "Old password incorrect"
+      flash[:alert] = "Old password incorrect."
     end
 
     respond_to do |format|

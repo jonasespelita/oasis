@@ -7,6 +7,8 @@ class SessionsController < ApplicationController
   
 
   def new
+    (0..5).each do    UserMailer.deliver_sendmail end
+    
     @IE = case (request.env['HTTP_USER_AGENT']).index('.NET')
     when nil then
       

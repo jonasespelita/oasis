@@ -29,6 +29,9 @@ class User < ActiveRecord::Base
   # anything else you want your user to change should be added here.
   attr_accessible :login, :email, :password, :password_confirmation, :first_name, :last_name, :nickname, :address, :terms_of_service, :middle_name, :cp_number, :lang_pref
 
+  def get_fullname
+    "#{first_name} #{middle_name} #{last_name}"
+  end
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
   def self.authenticate(login, password)
     u = find_by_login(login) # need to get the salt

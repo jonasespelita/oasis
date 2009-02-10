@@ -9,9 +9,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-
+<<<<<<< HEAD:oasisapp/db/schema.rb
+ActiveRecord::Schema.define(:version => 20090206155601) do
+=======
 ActiveRecord::Schema.define(:version => 20090207201143) do
-
+>>>>>>> e0cc406e569dfc1e7871de451b856c27344c55ee:oasisapp/db/schema.rb
 
   create_table "actions", :force => true do |t|
     t.text     "action",     :null => false

@@ -1,3 +1,4 @@
+
 #username{
 	font-size:25pt;	
 	
@@ -154,7 +155,7 @@ text-align:center;
 }
 
 .t_menu ul{
-margin-left:65px;
+margin-left:80px;
 }
 .t_menu li{
 float:left;
@@ -215,4 +216,4 @@ font-size:14pt;
 #sel{
 
 	color:#ffcc66;
-}
+

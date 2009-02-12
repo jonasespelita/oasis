@@ -1,3 +1,4 @@
+
 #sos{
 	background: transparent url(../images/reg/reg_sos.png) no-repeat;
 	width: 527px;
@@ -97,7 +98,7 @@ input{
 margin-bottom:10px;
 }
 
-.error{
+#error{
     font-weight:bold;
     color:#990033;
 }
@@ -132,3 +133,4 @@ padding-left:20px;
 
     display:inline-block;
 }
+

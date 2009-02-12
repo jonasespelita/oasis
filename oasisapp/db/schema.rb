@@ -9,7 +9,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+
 ActiveRecord::Schema.define(:version => 20090207201143) do
+
 
   create_table "actions", :force => true do |t|
     t.text     "action",     :null => false
@@ -28,8 +30,6 @@ ActiveRecord::Schema.define(:version => 20090207201143) do
     t.boolean  "active",                        :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "email"
-    t.datetime "last_visit"
   end
 
   create_table "announcements", :force => true do |t|
@@ -90,9 +90,9 @@ ActiveRecord::Schema.define(:version => 20090207201143) do
     t.boolean  "resolved",   :default => false
   end
 
-  create_table "students", :force => true do |t|
-    t.string   "idno"
-    t.string   "name"
+  create_table "sms", :force => true do |t|
+    t.string   "smstext"
+    t.string   "phone"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

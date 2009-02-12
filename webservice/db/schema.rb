@@ -74,8 +74,8 @@ ActiveRecord::Schema.define(:version => 20090203125338) do
     t.integer  "idNo"
     t.time     "time"
     t.date     "day"
-    t.text     "room"
-    t.text     "guidanceStatus"
+    t.string   "room"
+    t.string   "guidanceStatus"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
